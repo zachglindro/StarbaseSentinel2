@@ -18,9 +18,9 @@ public class MainMenu extends Application {
     @Override
     public void start(@NotNull Stage stage) {
         stage.setMinHeight(600);
+        stage.setMinWidth(600);
         stage.setMaxHeight(600);
         stage.setMaxWidth(600);
-        stage.setMinWidth(600);
 
         stage.setTitle("Starbase Sentinel");
         stage.setScene(showMainMenu());
@@ -30,16 +30,21 @@ public class MainMenu extends Application {
     private Scene showMainMenu() {
         StackPane withBackground = new StackPane();
 
+        // Load background
         Image background = new Image("file:src/main/resources/bg.jpg");
         ImageView backgroundView = new ImageView(background);
+        backgroundView.setPreserveRatio(true);
 
+        // Load main menu
         BorderPane mainMenu = new BorderPane();
         VBox menuButtons = new VBox();
 
+        // Create buttons
         Button startButton = new Button("Start");
         Button aboutButton = new Button("About");
         Button exitButton = new Button("Exit");
 
+        // Set button actions
         startButton.setOnAction(e -> {
             Game game = new Game();
             game.start((Stage) mainMenu.getScene().getWindow());
@@ -48,12 +53,13 @@ public class MainMenu extends Application {
         aboutButton.setOnAction(e -> mainMenu.setCenter(showAboutMenu().getRoot()));
         exitButton.setOnAction(e -> Platform.exit());
 
+        // Add buttons to menu
         menuButtons.getChildren().addAll(startButton, aboutButton, exitButton);
         menuButtons.setAlignment(Pos.CENTER);
         menuButtons.setSpacing(10);
 
+        // Add menu to background
         mainMenu.setCenter(menuButtons);
-
         withBackground.getChildren().addAll(backgroundView, mainMenu);
 
         return new Scene(withBackground);

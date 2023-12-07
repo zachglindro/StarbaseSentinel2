@@ -8,9 +8,12 @@ import javafx.scene.layout.HBox;
 public class Game {
     public void start(Stage stage) {
         HBox root = new HBox();
+
         Text text = new Text("Game started.");
         root.getChildren().add(text);
-        stage.setScene(new Scene(root));
+
+        Scene game = new Scene(root, 1280, 720);
+        stage.setScene(game);
         stage.show();
     }
 }

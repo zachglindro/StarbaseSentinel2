@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     @Override
-    public void start(@NotNull Stage stage) throws IOException {
+    public void start(@NotNull Stage stage) {
         VBox root = new VBox(10);
         root.setAlignment(Pos.CENTER);
 

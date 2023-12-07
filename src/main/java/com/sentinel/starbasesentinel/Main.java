@@ -8,8 +8,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-
 public class Main extends Application {
     @Override
     public void start(@NotNull Stage stage) {

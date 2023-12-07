@@ -19,8 +19,8 @@ public class Main extends Application {
         Button play = new Button("Play");
         Button exit = new Button("Exit");
 
-        play.setOnMouseClicked(e -> { System.out.println("I am playing"); });
-        exit.setOnMouseClicked(e -> { System.exit(0); });
+        play.setOnMouseClicked(e -> System.out.println("I am playing"));
+        exit.setOnMouseClicked(e -> System.exit(0));
 
         root.getChildren().addAll(play, exit);
         Scene scene = new Scene(root, 600, 600);

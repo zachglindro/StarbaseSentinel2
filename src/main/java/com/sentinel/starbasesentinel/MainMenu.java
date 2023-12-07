@@ -36,7 +36,11 @@ public class MainMenu extends Application {
 
         mainMenu.setCenter(menuButtons);
 
-        //startButton.setOnAction(e -> mainMenu.setCenter(new Game().getRoot()));
+        startButton.setOnAction(e -> {
+            Game game = new Game();
+            game.start((Stage) mainMenu.getScene().getWindow());
+        });
+
         aboutButton.setOnAction(e -> mainMenu.setCenter(showAboutMenu().getRoot()));
         exitButton.setOnAction(e -> Platform.exit());
 

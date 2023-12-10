@@ -18,9 +18,9 @@ public class MainMenu extends Application {
     @Override
     public void start(@NotNull Stage stage) {
         stage.setMinHeight(600);
-        stage.setMinWidth(600);
-        stage.setMaxHeight(600);
-        stage.setMaxWidth(600);
+        stage.setMinWidth(800);
+//        stage.setMaxHeight(1080);
+//        stage.setMaxWidth(1920);
 
         stage.setTitle("Starbase Sentinel");
         stage.setScene(showMainMenu());
@@ -31,7 +31,7 @@ public class MainMenu extends Application {
         StackPane withBackground = new StackPane();
 
         // Load background
-        Image background = new Image("file:src/main/resources/bg.jpg");
+        Image background = new Image("file:src/main/resources/bg.png");
         ImageView backgroundView = new ImageView(background);
         backgroundView.setPreserveRatio(true);
 

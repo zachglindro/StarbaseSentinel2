@@ -15,13 +15,11 @@ import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
 public class MainMenu extends Application {
+    Image backgroundImage = new Image("file:src/main/resources/bg.png");
+    ImageView background = new ImageView(backgroundImage);
+
     @Override
     public void start(@NotNull Stage stage) {
-        stage.setMinHeight(600);
-        stage.setMinWidth(800);
-//        stage.setMaxHeight(1080);
-//        stage.setMaxWidth(1920);
-
         stage.setTitle("Starbase Sentinel");
         stage.setScene(showMainMenu());
         stage.show();
@@ -29,13 +27,8 @@ public class MainMenu extends Application {
 
     private Scene showMainMenu() {
         StackPane withBackground = new StackPane();
+        background.setPreserveRatio(true);
 
-        // Load background
-        Image background = new Image("file:src/main/resources/bg.png");
-        ImageView backgroundView = new ImageView(background);
-        backgroundView.setPreserveRatio(true);
-
-        // Load main menu
         BorderPane mainMenu = new BorderPane();
         VBox menuButtons = new VBox();
 
@@ -49,7 +42,6 @@ public class MainMenu extends Application {
             Game game = new Game();
             game.start((Stage) mainMenu.getScene().getWindow());
         });
-
         aboutButton.setOnAction(e -> mainMenu.setCenter(showAboutMenu().getRoot()));
         exitButton.setOnAction(e -> Platform.exit());
 
@@ -60,26 +52,30 @@ public class MainMenu extends Application {
 
         // Add menu to background
         mainMenu.setCenter(menuButtons);
-        withBackground.getChildren().addAll(backgroundView, mainMenu);
+        withBackground.getChildren().addAll(background, mainMenu);
 
         return new Scene(withBackground);
     }
 
     private Scene showAboutMenu() {
+        StackPane withBackground = new StackPane();
+
         BorderPane aboutMenu = new BorderPane();
         VBox aboutText = new VBox();
 
         Text about = new Text("Starbase Sentinel, a tower defense game.");
+
         Button backButton = new Button("Back");
         backButton.setOnAction(e -> aboutMenu.setCenter(showMainMenu().getRoot()));
 
         aboutText.getChildren().addAll(about, backButton);
         aboutText.setAlignment(Pos.CENTER);
         aboutText.setSpacing(10);
-
         aboutMenu.setCenter(aboutText);
 
-        return new Scene(aboutMenu);
+        withBackground.getChildren().addAll(background, aboutMenu);
+
+        return new Scene(withBackground);
     }
 
     @Override

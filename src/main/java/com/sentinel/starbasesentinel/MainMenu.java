@@ -10,12 +10,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
 public class MainMenu extends Application {
-    Image backgroundImage = new Image("file:src/main/resources/bg.png");
+    Image backgroundImage = new Image("file:src/main/resources/mainmenu_bg.png");
     ImageView background = new ImageView(backgroundImage);
 
     @Override
@@ -32,6 +33,15 @@ public class MainMenu extends Application {
         BorderPane mainMenu = new BorderPane();
         VBox menuButtons = new VBox();
 
+        // Create logo and its container
+        Image logo = new Image("file:src/main/resources/logo.png");
+        ImageView logoView = new ImageView(logo);
+        logoView.setPreserveRatio(true);
+
+        VBox withLogo = new VBox(30);
+        withLogo.getChildren().add(logoView);
+        withLogo.setAlignment(Pos.CENTER);
+
         // Create buttons
         Button startButton = new Button("Start");
         Button aboutButton = new Button("About");
@@ -45,13 +55,14 @@ public class MainMenu extends Application {
         aboutButton.setOnAction(e -> mainMenu.setCenter(showAboutMenu().getRoot()));
         exitButton.setOnAction(e -> Platform.exit());
 
-        // Add buttons to menu
+        // Add buttons and logo to menu
         menuButtons.getChildren().addAll(startButton, aboutButton, exitButton);
         menuButtons.setAlignment(Pos.CENTER);
         menuButtons.setSpacing(10);
+        withLogo.getChildren().add(menuButtons);
 
         // Add menu to background
-        mainMenu.setCenter(menuButtons);
+        mainMenu.setCenter(withLogo);
         withBackground.getChildren().addAll(background, mainMenu);
 
         return new Scene(withBackground);
@@ -64,6 +75,7 @@ public class MainMenu extends Application {
         VBox aboutText = new VBox();
 
         Text about = new Text("Starbase Sentinel, a tower defense game.");
+        about.setFill(Color.WHITE);
 
         Button backButton = new Button("Back");
         backButton.setOnAction(e -> aboutMenu.setCenter(showMainMenu().getRoot()));

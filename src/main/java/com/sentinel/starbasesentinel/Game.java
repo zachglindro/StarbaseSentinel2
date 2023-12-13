@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.Light;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -23,10 +24,12 @@ public class Game {
         GraphicsContext gc = field.getGraphicsContext2D();
 
         // Add tank
+        Point2D initialPosition = new Point2D(0,720);
         ArrayList<Point2D> path = new ArrayList<>();
-        path.add(new Point2D(400,400));
+//        path.add(new Point2D(400,400));
         path.add(new Point2D(0, 0));
-        Tank tank = new Tank("file:src/main/resources/enemies/tank.png", new Point2D(0, 0), path);
+        path.add(new Point2D(1280, 0));
+        Tank tank = new Tank("file:src/main/resources/enemies/tank.png", initialPosition, path);
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {

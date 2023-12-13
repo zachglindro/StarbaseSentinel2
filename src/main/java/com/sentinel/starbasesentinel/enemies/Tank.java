@@ -8,8 +8,15 @@ import java.util.ArrayList;
 
 public class Tank extends Enemy {
 
-    public Tank(String image, Point2D position, ArrayList<Point2D> path) {
-        super(position, path);
+    public Tank(String image, ArrayList<Point2D> path) {
+        super(new Point2D(0,0), path);
+
+        this.image = new Image(image);
+        speed = 1;
+        hp = 50;
+    }
+    public Tank(String image, Point2D initialPosition, ArrayList<Point2D> path) {
+        super(initialPosition, path);
 
         this.image = new Image(image);
         speed = 1;
@@ -33,7 +40,8 @@ public class Tank extends Enemy {
 
     @Override
     public void render(GraphicsContext gc) {
-        move();
         gc.drawImage(image, position.getX(), position.getY());
+        move();
+
     }
 }

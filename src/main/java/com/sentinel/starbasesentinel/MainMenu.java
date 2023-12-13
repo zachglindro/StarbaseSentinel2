@@ -13,14 +13,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.NotNull;
 
 public class MainMenu extends Application {
     Image backgroundImage = new Image("file:src/main/resources/mainmenu_bg.png");
     ImageView background = new ImageView(backgroundImage);
 
     @Override
-    public void start(@NotNull Stage stage) {
+    public void start(Stage stage) {
         stage.setTitle("Starbase Sentinel");
         stage.setScene(showMainMenu());
         stage.show();
@@ -50,7 +49,7 @@ public class MainMenu extends Application {
         // Set button actions
         startButton.setOnAction(e -> {
             Game game = new Game();
-            game.start((Stage) mainMenu.getScene().getWindow());
+            game.start((Stage) mainMenu.getScene().getWindow()); // ano to
         });
         aboutButton.setOnAction(e -> mainMenu.setCenter(showAboutMenu().getRoot()));
         exitButton.setOnAction(e -> Platform.exit());

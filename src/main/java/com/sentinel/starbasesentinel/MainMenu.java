@@ -1,5 +1,6 @@
 package com.sentinel.starbasesentinel;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -45,6 +46,26 @@ public class MainMenu extends Application {
         withLogo.getChildren().add(logoView);
         withLogo.setAlignment(Pos.CENTER);
 
+        // Logo animation
+        double speed = 0.03; // Speed of animation
+        double maxHeight = 20;
+        new AnimationTimer() {
+            boolean movingUp = true;
+            public void handle(long currentNanoTime) {
+                if (movingUp) {
+                    logoView.setTranslateY(logoView.getTranslateY() - speed);
+                    if (logoView.getTranslateY() <= -maxHeight) {
+                        movingUp = false;
+                    }
+                } else {
+                    logoView.setTranslateY(logoView.getTranslateY() + speed);
+                    if (logoView.getTranslateY() >= 0) {
+                        movingUp = true;
+                    }
+                }
+            }
+        }.start();
+
         // Create buttons
         Button startButton = new Button("Start");
         Button aboutButton = new Button("About");
@@ -84,6 +105,7 @@ public class MainMenu extends Application {
         about.setFill(Color.WHITE);
 
         Button backButton = new Button("Back");
+        backButton.getStylesheets().add("file:src/main/style/button-styles.css");
         backButton.setOnAction(e -> aboutMenu.setCenter(showMainMenu().getRoot()));
 
         aboutText.getChildren().addAll(about, backButton);

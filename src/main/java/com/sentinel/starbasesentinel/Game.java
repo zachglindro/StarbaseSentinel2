@@ -28,7 +28,8 @@ public class Game {
         ArrayList<Point2D> path = new ArrayList<>();
 //        path.add(new Point2D(400,400));
         path.add(new Point2D(0, 0));
-        path.add(new Point2D(1280, 0));
+        path.add(new Point2D(1000, 0));
+        path.add(new Point2D(0,0));
         Tank tank = new Tank("file:src/main/resources/enemies/tank.png", initialPosition, path);
 
         new AnimationTimer() {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public abstract class Enemy {
     Image image;
-    int speed;
+    double speed;
     int hp;
     Point2D position;
     ArrayList<Point2D> path;
@@ -20,6 +20,7 @@ public abstract class Enemy {
 
     public void move() {
         if (path.isEmpty()) {
+            // TODO despawn enemy (?)
             // Enemy has reached the end of the path
         } else if (position.distance(path.getFirst()) < 1) {
             path.removeFirst();

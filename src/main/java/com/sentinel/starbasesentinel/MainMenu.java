@@ -21,6 +21,10 @@ public class MainMenu extends Application {
     @Override
     public void start(Stage stage) {
         stage.setTitle("Starbase Sentinel");
+        stage.setMinWidth(1280);
+        stage.setMinHeight(720);
+        stage.setMaxHeight(720);
+        stage.setMaxWidth(1280);
         stage.setScene(showMainMenu());
         stage.show();
     }
@@ -59,6 +63,9 @@ public class MainMenu extends Application {
         menuButtons.setAlignment(Pos.CENTER);
         menuButtons.setSpacing(10);
         withLogo.getChildren().add(menuButtons);
+
+        // Get button css stylesheet
+        menuButtons.getStylesheets().add("file:src/main/style/button-styles.css");
 
         // Add menu to background
         mainMenu.setCenter(withLogo);

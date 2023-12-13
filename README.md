@@ -5,6 +5,9 @@ A tower-defense game.
 - Tower
 - Defense
 
+# Cite
+- [Ground Shaker by Zintoki licensed CC0 1.0](https://zintoki.itch.io/ground-shaker)
+
 ## Lyrics
 We're no strangers to love  
 You know the rules and so do I (do I)  

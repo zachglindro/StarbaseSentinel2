@@ -18,21 +18,16 @@ public class Tank extends Enemy {
 
     @Override
     public void move() {
-        for (Point2D point : path) {
-            if (position.getX() == point.getX() && position.getY() == point.getY()) {
-                path.remove(point);
-                break;
-            }
-
-            if (position.getX() < point.getX()) {
-                position = position.add(speed, 0);
-            } else if (position.getX() > point.getX()) {
-                position = position.add(-speed, 0);
-            } else if (position.getY() < point.getY()) {
-                position = position.add(0, speed);
-            } else {
-                position = position.add(0, -speed);
-            }
+        // Check if tank is near the next point in the path
+        if (path.isEmpty()) {
+            // Tank has reached the end of the path
+        } else if (position.distance(path.getFirst()) < 1) {
+            path.removeFirst();
+        } else {
+            // Move tank towards next point in path
+            Point2D nextPosition = path.getFirst();
+            double angle = Math.atan2(nextPosition.getY() - position.getY(), nextPosition.getX() - position.getX());
+            position = position.add(speed * Math.cos(angle), speed * Math.sin(angle));
         }
     }
 

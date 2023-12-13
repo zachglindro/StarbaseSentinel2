@@ -24,21 +24,6 @@ public class Tank extends Enemy {
     }
 
     @Override
-    public void move() {
-        // Check if tank is near the next point in the path
-        if (path.isEmpty()) {
-            // Tank has reached the end of the path
-        } else if (position.distance(path.getFirst()) < 1) {
-            path.removeFirst();
-        } else {
-            // Move tank towards next point in path
-            Point2D nextPosition = path.getFirst();
-            double angle = Math.atan2(nextPosition.getY() - position.getY(), nextPosition.getX() - position.getX());
-            position = position.add(speed * Math.cos(angle), speed * Math.sin(angle));
-        }
-    }
-
-    @Override
     public void render(GraphicsContext gc) {
         gc.drawImage(image, position.getX(), position.getY());
         move();

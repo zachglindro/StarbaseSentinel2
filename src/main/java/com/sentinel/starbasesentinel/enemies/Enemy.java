@@ -18,7 +18,18 @@ public abstract class Enemy {
         this.path = path;
     }
 
-    public abstract void move();
+    public void move() {
+        if (path.isEmpty()) {
+            // Enemy has reached the end of the path
+        } else if (position.distance(path.getFirst()) < 1) {
+            path.removeFirst();
+        } else {
+            // Move enemy towards next point in path
+            Point2D nextPosition = path.getFirst();
+            double angle = Math.atan2(nextPosition.getY() - position.getY(), nextPosition.getX() - position.getX());
+            position = position.add(speed * Math.cos(angle), speed * Math.sin(angle));
+        }
+    }
 
     public abstract void render(GraphicsContext gc);
 }

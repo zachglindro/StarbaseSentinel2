@@ -1,0 +1,30 @@
+/* button-styles.css */
+
+.button {
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-text-fill: #b3b3b3; /* Light text color */
+    -fx-font-size: 18px; /* Font size */
+    -fx-padding: 12px 24px; /* Padding: 12px top/bottom, 24px left/right */
+    -fx-border-color: #b3b3b3; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-border-radius: 8px; /* Rounded corners */
+    -fx-cursor: hand; /* Hand cursor on hover */
+    -fx-transition: all 0.3s; /* Smooth transition on state change */
+}
+
+.button:hover {
+    -fx-background-color: white; /* White background */
+    -fx-background-radius: 8px;
+    -fx-text-fill: black; /* Light text color */
+    -fx-font-size: 18px; /* Font size */
+    -fx-padding: 12px 24px; /* Padding: 12px top/bottom, 24px left/right */
+    -fx-border-color: #b3b3b3; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-border-radius: 8px; /* Rounded corners */
+    -fx-cursor: hand; /* Hand cursor on hover */
+    -fx-transition: all 0.3s; /* Smooth transition on state change */
+}
+
+.button:pressed {
+    -fx-background-color: #121212; /* Even darker background on press */
+}

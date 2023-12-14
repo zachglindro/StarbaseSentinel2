@@ -11,10 +11,9 @@ public class Level {
         this.tank1 = new Tank(0, 700);
 
         // turning points
-        tank1.addToPath(0,400);
-        tank1.addToPath(400,400);
-        tank1.addToPath(1000,0);
-        tank1.addToPath(640,360);
+        tank1.addToPath(Grid.translate(0, 2));
+        tank1.addToPath(Grid.translate(20, 4));
+
     }
 
     public void render(GraphicsContext gc) {

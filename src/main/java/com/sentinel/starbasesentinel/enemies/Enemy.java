@@ -49,8 +49,8 @@ public abstract class Enemy {
     }
 
     // Adds a point to the enemy's path
-    public void addToPath(int x, int y) {
-        path.add(new Point2D(x, y));
+    public void addToPath(Point2D point) {
+        path.add(point);
     }
 
     public void render(GraphicsContext gc) {

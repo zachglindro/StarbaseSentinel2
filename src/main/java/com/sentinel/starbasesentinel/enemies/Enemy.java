@@ -18,13 +18,13 @@ public abstract class Enemy {
     ArrayList<Point2D> path;
     int hasReachedEnd;
 
-    public Enemy(Image image, Point2D position, ArrayList<Point2D> path) {
+    public Enemy(Image image, Point2D position) {
         this.imageView = new ImageView(image);
         this.position = position;
-        this.path = path;
+        this.path = new ArrayList<>();
     }
 
-    public void move() {
+    private void move() {
         if (path.isEmpty()) {
             hasReachedEnd = 1;
         } else if (position.distance(path.getFirst()) < 1) {
@@ -38,7 +38,7 @@ public abstract class Enemy {
         }
     }
 
-    public void rotate() {
+    private void rotate() {
         if (path.isEmpty()) {
             return;
         }
@@ -48,7 +48,13 @@ public abstract class Enemy {
         imageView.setRotate(Math.toDegrees(angle) + 90);
     }
 
+    // Adds a point to the enemy's path
+    public void addToPath(int x, int y) {
+        path.add(new Point2D(x, y));
+    }
+
     public void render(GraphicsContext gc) {
+        System.out.println("Test");
         move();
 
         // Rotate image

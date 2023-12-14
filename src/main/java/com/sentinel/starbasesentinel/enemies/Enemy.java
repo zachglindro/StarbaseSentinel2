@@ -54,6 +54,7 @@ public abstract class Enemy {
     }
 
     public void render(GraphicsContext gc) {
+        System.out.println("Test");
         move();
 
         // Rotate image

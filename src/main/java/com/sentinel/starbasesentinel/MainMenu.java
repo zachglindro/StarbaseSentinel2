@@ -47,7 +47,7 @@ public class MainMenu extends Application {
         withLogo.setAlignment(Pos.CENTER);
 
         // Logo animation
-        double speed = 0.03; // Speed of animation
+        double speed = 0.02; // Speed of animation
         double maxHeight = 15;
         new AnimationTimer() {
             boolean movingUp = true;

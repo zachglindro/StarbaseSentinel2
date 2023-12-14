@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Tank extends Enemy {
 
     public Tank(Point2D initialPosition, ArrayList<Point2D> path) {
-        super(new Image("file:src/main/resources/enemies/tank.png", 50, 50, true, true),
+        super(new Image("file:src/main/resources/enemies/tankslow-up.gif", 50, 50, true, true),
                 initialPosition,
                 path);
 

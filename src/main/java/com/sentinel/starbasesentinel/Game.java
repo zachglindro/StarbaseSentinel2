@@ -28,7 +28,7 @@ public class Game {
         path.add(new Point2D(0,400));
         path.add(new Point2D(400, 400));
         path.add(new Point2D(1000, 0));
-//        path.add(new Point2D(0,0));
+        path.add(new Point2D(640, 360));
 
         // create Tank
         Tank tank = new Tank(initialPosition, path);

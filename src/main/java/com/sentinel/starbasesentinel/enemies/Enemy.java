@@ -39,6 +39,10 @@ public abstract class Enemy {
     }
 
     public void rotate() {
+        if (path.isEmpty()) {
+            return;
+        }
+
         Point2D nextPosition = path.getFirst();
         double angle = Math.atan2(nextPosition.getY() - position.getY(), nextPosition.getX() - position.getX());
         imageView.setRotate(Math.toDegrees(angle) + 90);
@@ -47,9 +51,12 @@ public abstract class Enemy {
     public void render(GraphicsContext gc) {
         move();
 
+        // Rotate image
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
         WritableImage rotatedImage = imageView.snapshot(params, null);
-        gc.drawImage(rotatedImage, position.getX(), position.getY());
+
+        // Draw rotated image with center at position
+        gc.drawImage(rotatedImage, position.getX() - rotatedImage.getWidth() / 2, position.getY() - rotatedImage.getHeight() / 2);
     }
 }

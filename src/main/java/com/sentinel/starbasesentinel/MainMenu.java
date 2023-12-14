@@ -16,7 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainMenu extends Application {
-    Image backgroundImage = new Image("file:src/main/resources/simple-space2.png");
+    final Image backgroundImage = new Image("file:src/main/resources/simple-space2.png");
     ImageView background = new ImageView(backgroundImage);
 
     @Override
@@ -24,8 +24,7 @@ public class MainMenu extends Application {
         stage.setTitle("Starbase Sentinel");
         stage.setMinWidth(1280);
         stage.setMinHeight(720);
-//        stage.setMaxHeight(720);
-//        stage.setMaxWidth(1280);
+
         stage.setScene(showMainMenu());
         stage.show();
     }

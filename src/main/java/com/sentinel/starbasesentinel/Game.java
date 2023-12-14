@@ -18,7 +18,6 @@ public class Game {
         GraphicsContext gc = field.getGraphicsContext2D();
 
         Level level = new Level();
-        level.init();
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {

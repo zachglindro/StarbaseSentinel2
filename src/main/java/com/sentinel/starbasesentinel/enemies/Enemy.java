@@ -1,5 +1,6 @@
 package com.sentinel.starbasesentinel.enemies;
 
+import com.sentinel.starbasesentinel.levels.Grid;
 import javafx.geometry.Point2D;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,25 +12,26 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
 public abstract class Enemy {
-    ImageView imageView;
+    final ImageView imageView;
     double speed;
     int hp;
     Point2D position;
     ArrayList<Point2D> path;
     int hasReachedEnd;
 
-    public Enemy(Image image, Point2D startPos) {
+    public Enemy(Image image, int x, int y) {
         this.imageView = new ImageView(image);
-        this.position = startPos;
+        this.position = Grid.translate(x, y);
         this.path = new ArrayList<>();
     }
 
+    // Move enemy towards next point in path
     private void move() {
+        rotate();
         if (path.isEmpty()) {
             hasReachedEnd = 1;
         } else if (position.distance(path.getFirst()) < 1) {
             path.removeFirst();
-            rotate();
         } else {
             // Move enemy towards next point in path
             Point2D nextPosition = path.getFirst(); // get first element in ArrayList
@@ -38,6 +40,7 @@ public abstract class Enemy {
         }
     }
 
+    // Rotate image to face next point in path
     private void rotate() {
         if (path.isEmpty()) {
             return;
@@ -45,12 +48,11 @@ public abstract class Enemy {
 
         Point2D nextPosition = path.getFirst();
         double angle = Math.atan2(nextPosition.getY() - position.getY(), nextPosition.getX() - position.getX());
-        imageView.setRotate(Math.toDegrees(angle) + 90);
+        imageView.setRotate(Math.toDegrees(angle) + 90); // assumes image is facing up
     }
 
-    // Adds a point to the enemy's path
-    public void addToPath(Point2D point) {
-        path.add(point);
+    public void setPath(ArrayList<Point2D> path) {
+        this.path = path;
     }
 
     public void render(GraphicsContext gc) {

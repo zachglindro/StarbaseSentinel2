@@ -16,7 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainMenu extends Application {
-    Image backgroundImage = new Image("file:src/main/resources/mainmenu_bg.png");
+    Image backgroundImage = new Image("file:src/main/resources/simple-space2.png");
     ImageView background = new ImageView(backgroundImage);
 
     @Override
@@ -48,7 +48,7 @@ public class MainMenu extends Application {
 
         // Logo animation
         double speed = 0.03; // Speed of animation
-        double maxHeight = 20;
+        double maxHeight = 15;
         new AnimationTimer() {
             boolean movingUp = true;
             public void handle(long currentNanoTime) {

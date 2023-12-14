@@ -1,7 +1,8 @@
-/* button-styles.css */
+/*gg lods*/
 
 .button {
-    -fx-background-color: transparent; /* Transparent background */
+    -fx-background-color: black; /* Transparent background */
+    -fx-background-radius: 8px;
     -fx-text-fill: white; /* Light text color */
     -fx-font-size: 18px; /* Font size */
     -fx-padding: 12px 24px; /* Padding: 12px top/bottom, 24px left/right */
@@ -14,8 +15,8 @@
 
 .button:hover {
     -fx-background-color: white; /* White background */
-    -fx-background-radius: 8px;
-    -fx-text-fill: black; /* Light text color */
+    -fx-background-radius: 8px; /* Rounded background corners*/
+    -fx-text-fill: black; /* Black text color */
     -fx-font-size: 18px; /* Font size */
     -fx-padding: 12px 24px; /* Padding: 12px top/bottom, 24px left/right */
     -fx-border-color: white; /* Border color */
@@ -26,5 +27,5 @@
 }
 
 .button:pressed {
-    -fx-background-color: gray; /* Even darker background on press */
+    -fx-background-color: gray; /* Gray background on press */
 }

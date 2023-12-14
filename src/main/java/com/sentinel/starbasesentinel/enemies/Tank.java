@@ -12,14 +12,14 @@ public class Tank extends Enemy {
         super(new Point2D(0,0), path);
 
         this.image = new Image(image);
-        speed = 0.1;
+        speed = 1;
         hp = 50;
     }
     public Tank(String image, Point2D initialPosition, ArrayList<Point2D> path) {
         super(initialPosition, path);
 
         this.image = new Image(image);
-        speed = 0.1;
+        speed = 1;
         hp = 50;
     }
 

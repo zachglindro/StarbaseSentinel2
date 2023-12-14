@@ -24,26 +24,28 @@ public class Game {
         GraphicsContext gc = field.getGraphicsContext2D();
 
         // Add tank
-        Point2D initialPosition = new Point2D(0,720);
-        ArrayList<Point2D> path = new ArrayList<>();
-//        path.add(new Point2D(400,400));
-        path.add(new Point2D(0, 0));
+        Point2D initialPosition = new Point2D(0,700); // set spawn point
+        ArrayList<Point2D> path = new ArrayList<>(); // initialize path list
+
+        // turning points
+        path.add(new Point2D(0,400));
+        path.add(new Point2D(400, 400));
         path.add(new Point2D(1000, 0));
-        path.add(new Point2D(0,0));
+//        path.add(new Point2D(0,0));
+
+        // create Tank
         Tank tank = new Tank("file:src/main/resources/enemies/tank.png", initialPosition, path);
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
-                double t = (currentNanoTime - startNanoTime) / 1000000000.0;
+                double t = (currentNanoTime - startNanoTime) / 1000000000.0; // kelangan ba to ?
 
-                // Clear canvas
-                gc.clearRect(0, 0, WIDTH, HEIGHT);
+                // reset canvas (?)
+                gc.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
+                gc.setFill(Color.web("#1b1a17")); // set background color
+                gc.fillRect(0, 0, WIDTH, HEIGHT); // fill canvas with color
 
-                // Set background color
-                gc.setFill(Color.web("#1b1a17"));
-                gc.fillRect(0, 0, WIDTH, HEIGHT);
-
-                // Draw tank
+                // Draw tank with updated position
                 tank.render(gc);
             }
         }.start();

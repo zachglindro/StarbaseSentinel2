@@ -20,15 +20,16 @@ public abstract class Enemy {
 
     public void move() {
         if (path.isEmpty()) {
-            // TODO despawn enemy (?)
+            // TODO despawn enemy
+            // TODO update game state (decrease base health, etc)
             // Enemy has reached the end of the path
         } else if (position.distance(path.getFirst()) < 1) {
             path.removeFirst();
         } else {
             // Move enemy towards next point in path
-            Point2D nextPosition = path.getFirst();
-            double angle = Math.atan2(nextPosition.getY() - position.getY(), nextPosition.getX() - position.getX());
-            position = position.add(speed * Math.cos(angle), speed * Math.sin(angle));
+            Point2D nextPosition = path.getFirst(); // get first element in ArrayList
+            double angle = Math.atan2(nextPosition.getY() - position.getY(), nextPosition.getX() - position.getX()); // magic
+            position = position.add(speed * Math.cos(angle), speed * Math.sin(angle)); // magic 2
         }
     }
 

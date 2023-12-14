@@ -18,9 +18,9 @@ public abstract class Enemy {
     ArrayList<Point2D> path;
     int hasReachedEnd;
 
-    public Enemy(Image image, Point2D position) {
+    public Enemy(Image image, int x, int y) {
         this.imageView = new ImageView(image);
-        this.position = position;
+        this.position = new Point2D(x, y);
         this.path = new ArrayList<>();
     }
 
@@ -54,7 +54,6 @@ public abstract class Enemy {
     }
 
     public void render(GraphicsContext gc) {
-        System.out.println("Test");
         move();
 
         // Rotate image

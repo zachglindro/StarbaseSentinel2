@@ -1,7 +1,6 @@
 package com.sentinel.starbasesentinel.levels;
 
 import com.sentinel.starbasesentinel.enemies.Tank;
-import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Level {
@@ -9,7 +8,7 @@ public class Level {
 
     public void init() {
         // Add tank
-        this.tank1 = new Tank(new Point2D(0,700));
+        this.tank1 = new Tank(0, 700);
 
         // turning points
         tank1.addToPath(0,400);

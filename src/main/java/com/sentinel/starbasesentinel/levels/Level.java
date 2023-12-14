@@ -18,7 +18,7 @@ public class Level {
         // turning points
         tank1.addToPath(Grid.translate(0, 6));
         tank1.addToPath(Grid.translate(1, 6));
-        tank1.addToPath(Grid.translate(0, 0));
+        tank1.addToPath(Grid.translate(0, 14));
 
 
     }

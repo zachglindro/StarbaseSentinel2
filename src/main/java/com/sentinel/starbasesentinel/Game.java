@@ -18,8 +18,6 @@ public class Game {
         Canvas field = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = field.getGraphicsContext2D();
 
-        Image bg = new Image("file:src/main/resources/level1-test.png");
-        gc.drawImage(bg,0,0);
 
         Level level = new Level();
         level.init();

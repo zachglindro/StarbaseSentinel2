@@ -6,7 +6,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -17,9 +16,6 @@ public class Game {
     public void start(Stage stage) {
         Canvas field = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = field.getGraphicsContext2D();
-
-        Image bg = new Image("file:src/main/resources/level1-test.png");
-        gc.drawImage(bg,0,0);
 
         Level level = new Level();
         level.init();

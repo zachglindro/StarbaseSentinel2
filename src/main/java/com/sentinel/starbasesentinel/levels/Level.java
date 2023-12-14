@@ -12,13 +12,13 @@ public class Level {
         this.tank1 = new Tank(0, 700);
 
 
-        bg = new Image("file:src/main/resources/grid.png");
+        bg = new Image("file:src/main/resources/level1-test.png");
 
 
         // turning points
-        tank1.addToPath(Grid.translate(0, 6));
-        tank1.addToPath(Grid.translate(1, 6));
-        tank1.addToPath(Grid.translate(0, 0));
+        tank1.addToPath(Grid.translate(0, 5));
+        tank1.addToPath(Grid.translate(4,5 ));
+        tank1.addToPath(Grid.translate(4, 11));
 
 
     }

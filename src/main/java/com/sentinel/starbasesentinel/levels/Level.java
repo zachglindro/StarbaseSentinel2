@@ -9,16 +9,14 @@ public class Level {
     Image bg;
     public void init() {
         // Add tank
-        this.tank1 = new Tank(0, 700);
+        this.tank1 = new Tank(Grid.translate(0, 0));
 
-
-        bg = new Image("file:src/main/resources/level1-test.png");
-
+        bg = new Image("file:src/main/resources/gridpathtest.png");
 
         // turning points
-        tank1.addToPath(Grid.translate(0, 5));
-        tank1.addToPath(Grid.translate(4,5 ));
-        tank1.addToPath(Grid.translate(4, 11));
+        tank1.addToPath(Grid.translate(0, 3));
+        tank1.addToPath(Grid.translate(2, 3));
+//        tank1.addToPath(Grid.translate(0, 14));
 
 
     }

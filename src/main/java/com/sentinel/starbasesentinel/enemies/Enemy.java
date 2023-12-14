@@ -18,13 +18,13 @@ public abstract class Enemy {
     ArrayList<Point2D> path;
     int hasReachedEnd;
 
-    public Enemy(Image image, Point2D position, ArrayList<Point2D> path) {
+    public Enemy(Image image, int x, int y) {
         this.imageView = new ImageView(image);
-        this.position = position;
-        this.path = path;
+        this.position = new Point2D(x, y);
+        this.path = new ArrayList<>();
     }
 
-    public void move() {
+    private void move() {
         if (path.isEmpty()) {
             hasReachedEnd = 1;
         } else if (position.distance(path.getFirst()) < 1) {
@@ -38,18 +38,30 @@ public abstract class Enemy {
         }
     }
 
-    public void rotate() {
+    private void rotate() {
+        if (path.isEmpty()) {
+            return;
+        }
+
         Point2D nextPosition = path.getFirst();
         double angle = Math.atan2(nextPosition.getY() - position.getY(), nextPosition.getX() - position.getX());
         imageView.setRotate(Math.toDegrees(angle) + 90);
     }
 
+    // Adds a point to the enemy's path
+    public void addToPath(Point2D point) {
+        path.add(point);
+    }
+
     public void render(GraphicsContext gc) {
         move();
 
+        // Rotate image
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
         WritableImage rotatedImage = imageView.snapshot(params, null);
-        gc.drawImage(rotatedImage, position.getX(), position.getY());
+
+        // Draw rotated image with center at position
+        gc.drawImage(rotatedImage, position.getX() - rotatedImage.getWidth() / 2, position.getY() - rotatedImage.getHeight() / 2);
     }
 }

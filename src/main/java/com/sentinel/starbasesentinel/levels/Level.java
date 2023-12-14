@@ -22,6 +22,7 @@ public class Level {
         Astronaut astronaut2 = new Astronaut(-1, 3);
         Astronaut astronaut3 = new Astronaut(-1, 3);
 
+        // Add enemies to ArrayList
         enemies = new ArrayList<>();
         enemies.add(tank1);
         enemies.add(astronaut1);

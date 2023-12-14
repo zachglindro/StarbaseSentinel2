@@ -14,23 +14,38 @@ import java.util.ArrayList;
 public abstract class Enemy {
     final ImageView imageView;
     double speed;
-    int hp;
+    double hp;
     Point2D position;
     ArrayList<Point2D> path;
-    int hasReachedEnd;
+    Boolean doNotRotate;
 
-    public Enemy(Image image, int x, int y) {
+    public Enemy(Image image, double x, double y, double speed, double hp, Boolean doNotRotate) {
+        this.doNotRotate = doNotRotate;
         this.imageView = new ImageView(image);
         this.position = Grid.translate(x, y);
+        this.speed = speed;
+        this.hp = hp;
+
         this.path = new ArrayList<>();
+    }
+
+    public Enemy(Image image, double x, double y, double speed, double hp) {
+        this(image, x, y, speed, hp, false);
     }
 
     // Move enemy towards next point in path
     private void move() {
-        rotate();
+        // If the enemy has reached the end of the path, do nothing
         if (path.isEmpty()) {
-            hasReachedEnd = 1;
-        } else if (position.distance(path.getFirst()) < 1) {
+            // should do something here
+            return;
+        }
+
+        if (!doNotRotate) {
+            rotate();
+        }
+
+        if (position.distance(path.getFirst()) < 1) {
             path.removeFirst();
         } else {
             // Move enemy towards next point in path
@@ -42,10 +57,6 @@ public abstract class Enemy {
 
     // Rotate image to face next point in path
     private void rotate() {
-        if (path.isEmpty()) {
-            return;
-        }
-
         Point2D nextPosition = path.getFirst();
         double angle = Math.atan2(nextPosition.getY() - position.getY(), nextPosition.getX() - position.getX());
         imageView.setRotate(Math.toDegrees(angle) + 90); // assumes image is facing up

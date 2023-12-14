@@ -7,6 +7,6 @@ public class Grid {
     static int cellSize = 48;
 
     public static Point2D translate(int x, int y) {
-        return new Point2D(x * cellSize, y * cellSize);
+        return new Point2D(x * cellSize + 24, y * cellSize + 24);
     }
 }

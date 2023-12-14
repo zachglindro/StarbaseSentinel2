@@ -18,9 +18,9 @@ public abstract class Enemy {
     ArrayList<Point2D> path;
     int hasReachedEnd;
 
-    public Enemy(Image image, int x, int y) {
+    public Enemy(Image image, Point2D startPos) {
         this.imageView = new ImageView(image);
-        this.position = new Point2D(x, y);
+        this.position = startPos;
         this.path = new ArrayList<>();
     }
 

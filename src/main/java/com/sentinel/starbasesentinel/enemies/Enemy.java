@@ -21,6 +21,7 @@ public abstract class Enemy {
     public void move() {
         if (path.isEmpty()) {
             // TODO despawn enemy
+
             // TODO update game state (decrease base health, etc)
             // Enemy has reached the end of the path
         } else if (position.distance(path.getFirst()) < 1) {
@@ -33,5 +34,8 @@ public abstract class Enemy {
         }
     }
 
-    public abstract void render(GraphicsContext gc);
+    public void render(GraphicsContext gc) {
+        gc.drawImage(image, position.getX(), position.getY());
+        move();
+    }
 }

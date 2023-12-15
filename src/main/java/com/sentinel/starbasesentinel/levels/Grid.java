@@ -9,4 +9,8 @@ public class Grid {
     public static Point2D translate(double x, double y) {
         return new Point2D(x * cellSize + 24, y * cellSize + 24);
     }
+
+    public static double translate(double x) {
+        return x * cellSize + 24;
+    }
 }

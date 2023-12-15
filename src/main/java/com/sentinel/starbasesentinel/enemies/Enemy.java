@@ -12,12 +12,12 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
 public abstract class Enemy {
-    final ImageView imageView;
-    double speed;
-    double hp;
-    Point2D position;
-    ArrayList<Point2D> path;
-    Boolean doNotRotate;
+    protected final ImageView imageView;
+    protected double speed;
+    protected double hp;
+    protected Point2D position;
+    protected ArrayList<Point2D> path;
+    protected Boolean doNotRotate;
 
     public Enemy(Image image, double x, double y, double speed, double hp, Boolean doNotRotate) {
         this.doNotRotate = doNotRotate;

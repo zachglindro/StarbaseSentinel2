@@ -1,12 +1,11 @@
 package com.sentinel.starbasesentinel;
 
-import com.sentinel.starbasesentinel.levels.Level;
+import com.sentinel.starbasesentinel.levels.Level1;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Game {
@@ -17,18 +16,16 @@ public class Game {
         Canvas field = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = field.getGraphicsContext2D();
 
-        Level level = new Level();
+        Level1 level = new Level1();
 
-        new AnimationTimer() {
-            public void handle(long currentNanoTime) {
-                // reset canvas (?)
-                gc.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
-                gc.setFill(Color.web("#1b1a17")); // set background color
-                gc.fillRect(0, 0, WIDTH, HEIGHT); // fill canvas with color
-
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
                 level.render(gc);
             }
-        }.start();
+        };
+
+        timer.start();
 
         Group group = new Group(field);
         Scene game = new Scene(group);

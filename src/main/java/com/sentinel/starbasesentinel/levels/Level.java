@@ -1,63 +1,35 @@
 package com.sentinel.starbasesentinel.levels;
 
-import com.sentinel.starbasesentinel.enemies.Astronaut;
 import com.sentinel.starbasesentinel.enemies.Enemy;
-import com.sentinel.starbasesentinel.enemies.Tank;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-public class Level {
-    final long startTime;
-    ArrayList<Enemy> enemies;
-    final Image bg;
-    public Level() {
-        bg = new Image("file:src/main/resources/gridpathtest.png");
-        startTime = System.currentTimeMillis();
+public abstract class Level {
+    protected final static int WIDTH = 1280;
+    protected final static int HEIGHT = 720;
+    protected long startTime;
+    protected Image bg;
+    protected ArrayList<Enemy> enemies;
 
-        // Add enemies
-        Tank tank1 = new Tank(-1, 3);
-        Astronaut astronaut1 = new Astronaut(-1, 3);
-        Astronaut astronaut2 = new Astronaut(-1, 3);
-        Astronaut astronaut3 = new Astronaut(-1, 3);
-
-        // Add enemies to ArrayList
-        enemies = new ArrayList<>();
-        enemies.add(tank1);
-        enemies.add(astronaut1);
-        enemies.add(astronaut2);
-        enemies.add(astronaut3);
-
-        // Set path for the level
-        Path path = new Path();
-        path.add(5, 3);
-        path.add(5, 6);
-        path.add(8, 6);
-        path.add(8, 3);
-        path.add(5, 3);
-
-        // Set path for each enemy
-        for (Enemy enemy : enemies) {
-            enemy.setPath(path.get());
-        }
+    public Level(Image bg) {
+        this.startTime = System.currentTimeMillis();
+        this.enemies = new ArrayList<>();
+        this.bg = bg;
     }
 
     public void render(GraphicsContext gc) {
+        // Set background color of level
+        gc.clearRect(0, 0, WIDTH, HEIGHT);
+        gc.setFill(Color.web("#1b1a17")); // kulay ng slides ni sir jm
+        gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.drawImage(bg,0,0);
 
-        // Render tank
-        enemies.getFirst().render(gc);
-
-        // Render astronauts with 5-second delay
-        if (System.currentTimeMillis() - startTime > 5000) {
-            enemies.get(1).render(gc);
-        }
-        if (System.currentTimeMillis() - startTime > 6000) {
-            enemies.get(2).render(gc);
-        }
-        if (System.currentTimeMillis() - startTime > 7000) {
-            enemies.get(3).render(gc);
+        // Render enemies
+        for (Enemy enemy : enemies) {
+            enemy.render(gc);
         }
     }
 }

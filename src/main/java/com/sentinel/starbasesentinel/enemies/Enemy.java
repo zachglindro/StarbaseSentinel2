@@ -13,10 +13,10 @@ import java.util.ArrayList;
 
 public abstract class Enemy {
     protected ImageView imageView;
-    protected double speed;
+    protected final double speed;
     protected Point2D position;
     protected ArrayList<Point2D> path;
-    protected Boolean doNotRotate;
+    protected final Boolean doNotRotate;
 
     protected Enemy(Image image, double x, double y, double speed, Boolean doNotRotate) {
         this.doNotRotate = doNotRotate;

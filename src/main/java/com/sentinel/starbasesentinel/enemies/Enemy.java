@@ -12,24 +12,22 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
 public abstract class Enemy {
-    private final ImageView imageView;
-    private final double speed;
-    private double hp;
-    private Point2D position;
-    private ArrayList<Point2D> path;
-    private final Boolean doNotRotate;
+    protected ImageView imageView;
+    protected double speed;
+    protected Point2D position;
+    protected ArrayList<Point2D> path;
+    protected Boolean doNotRotate;
 
-    public Enemy(Image image, double x, double y, double speed, double hp, Boolean doNotRotate) {
+    protected Enemy(Image image, double x, double y, double speed, Boolean doNotRotate) {
         this.doNotRotate = doNotRotate;
         this.imageView = new ImageView(image);
-        this.position = Grid.translate(x, y);
+        this.position = Grid.translateToCoords(x, y);
         this.speed = speed;
-        this.hp = hp;
 
         this.path = new ArrayList<>();
     }
 
-    public Enemy(Image image, double x, double y, double speed, double hp) {
+    protected Enemy(Image image, double x, double y, double speed, double hp) {
         this(image, x, y, speed, hp, false);
     }
 
@@ -66,15 +64,22 @@ public abstract class Enemy {
         this.path = path;
     }
 
+    // Gets the current position of the enemy
+    public Point2D getPosition() {
+        return position;
+    }
+
+    // Renders the enemy
     public void render(GraphicsContext gc) {
         move();
 
-        // Rotate image
+        // Get a snapshot of the rotated image with a transparent background
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
         WritableImage rotatedImage = imageView.snapshot(params, null);
 
-        // Draw rotated image with center at position
+        // Draw rotated image at the enemy's position
+        // Subtract half of the image's width and height to center the image
         gc.drawImage(rotatedImage, position.getX() - rotatedImage.getWidth() / 2, position.getY() - rotatedImage.getHeight() / 2);
     }
 }

@@ -12,7 +12,7 @@ public class Path {
     }
 
     public void add(int x, int y) {
-        path.add(Grid.translate(x, y));
+        path.add(Grid.translateToCoords(x, y));
     }
 
     // Return a copy of the path

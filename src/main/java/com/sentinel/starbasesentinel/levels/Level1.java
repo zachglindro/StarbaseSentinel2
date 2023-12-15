@@ -3,11 +3,14 @@ package com.sentinel.starbasesentinel.levels;
 import com.sentinel.starbasesentinel.enemies.Astronaut;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.enemies.Tank;
+import com.sentinel.starbasesentinel.towers.Basic;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Level1 extends Level {
+    Basic basic;
+
     public Level1() {
         super(new Image("file:src/main/resources/gridpathtest.png"));
         init();
@@ -38,6 +41,9 @@ public class Level1 extends Level {
         for (Enemy enemy : enemies) {
             enemy.setPath(path.get());
         }
+
+        basic = new Basic();
+        basic.place(5,3);
     }
 
     @Override
@@ -47,6 +53,8 @@ public class Level1 extends Level {
         gc.setFill(Color.web("#1b1a17")); // kulay ng slides ni sir jm
         gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.drawImage(bg,0,0);
+
+        basic.render(gc, enemies);
 
         // Render tank
         enemies.getFirst().render(gc);

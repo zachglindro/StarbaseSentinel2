@@ -1,6 +1,8 @@
 package com.sentinel.starbasesentinel.levels;
 
 import com.sentinel.starbasesentinel.enemies.Enemy;
+import com.sentinel.starbasesentinel.towers.Bullet;
+import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -13,23 +15,15 @@ public abstract class Level {
     protected long startTime;
     protected Image bg;
     protected ArrayList<Enemy> enemies;
+    protected ArrayList<Tower> towers;
 
     public Level(Image bg) {
         this.startTime = System.currentTimeMillis();
-        this.enemies = new ArrayList<>();
         this.bg = bg;
+
+        this.enemies = new ArrayList<>();
+        this.towers = new ArrayList<>();
     }
 
-    public void render(GraphicsContext gc) {
-        // Set background color of level
-        gc.clearRect(0, 0, WIDTH, HEIGHT);
-        gc.setFill(Color.web("#1b1a17")); // kulay ng slides ni sir jm
-        gc.fillRect(0, 0, WIDTH, HEIGHT);
-        gc.drawImage(bg,0,0);
-
-        // Render enemies
-        for (Enemy enemy : enemies) {
-            enemy.render(gc);
-        }
-    }
+    public abstract void render(GraphicsContext gc);
 }

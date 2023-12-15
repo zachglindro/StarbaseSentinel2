@@ -4,12 +4,12 @@ import com.sentinel.starbasesentinel.enemies.Astronaut;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.enemies.Tank;
 import com.sentinel.starbasesentinel.towers.Basic;
+import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Level1 extends Level {
-    Basic basic;
 
     public Level1() {
         super(new Image("file:src/main/resources/gridpathtest.png"));
@@ -42,8 +42,11 @@ public class Level1 extends Level {
             enemy.setPath(path.get());
         }
 
-        basic = new Basic();
+        // Test tower behavior
+        Basic basic = new Basic();
         basic.place(5,3);
+
+        towers.add(basic);
     }
 
     @Override
@@ -54,7 +57,10 @@ public class Level1 extends Level {
         gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.drawImage(bg,0,0);
 
-        basic.render(gc, enemies);
+        // Render towers
+        for (Tower tower : towers) {
+            tower.render(gc, enemies);
+        }
 
         // Render tank
         enemies.getFirst().render(gc);

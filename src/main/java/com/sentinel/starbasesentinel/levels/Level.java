@@ -53,10 +53,10 @@ public class Level {
         if (System.currentTimeMillis() - startTime > 5000) {
             enemies.get(1).render(gc);
         }
-        if (System.currentTimeMillis() - startTime > 5500) {
+        if (System.currentTimeMillis() - startTime > 6000) {
             enemies.get(2).render(gc);
         }
-        if (System.currentTimeMillis() - startTime > 6000) {
+        if (System.currentTimeMillis() - startTime > 7000) {
             enemies.get(3).render(gc);
         }
     }

@@ -27,8 +27,8 @@ public abstract class Enemy {
         this.path = new ArrayList<>();
     }
 
-    protected Enemy(Image image, double x, double y, double speed, double hp) {
-        this(image, x, y, speed, hp, false);
+    protected Enemy(Image image, double x, double y, double speed) {
+        this(image, x, y, speed, false);
     }
 
     // Move enemy towards next point in path

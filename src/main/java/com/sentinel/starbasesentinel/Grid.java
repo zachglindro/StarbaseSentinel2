@@ -1,4 +1,4 @@
-package com.sentinel.starbasesentinel.levels;
+package com.sentinel.starbasesentinel;
 
 import javafx.geometry.Point2D;
 

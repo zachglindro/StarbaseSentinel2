@@ -1,6 +1,6 @@
 package com.sentinel.starbasesentinel.enemies;
 
-import com.sentinel.starbasesentinel.levels.Grid;
+import com.sentinel.starbasesentinel.Grid;
 import javafx.geometry.Point2D;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;

@@ -1,5 +1,6 @@
 package com.sentinel.starbasesentinel.levels;
 
+import com.sentinel.starbasesentinel.Grid;
 import javafx.geometry.Point2D;
 
 import java.util.ArrayList;

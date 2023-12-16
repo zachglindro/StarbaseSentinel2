@@ -18,7 +18,7 @@ public class Bullet {
         this.target = target;
 
         this.speed = 0.5;
-        this.image = new Image("file:src/main/resources/towers/bullet.gif");
+        this.image = new Image("file:src/main/resources/towers/bulletbasic.gif");
         this.markForDeletion = false;
     }
 

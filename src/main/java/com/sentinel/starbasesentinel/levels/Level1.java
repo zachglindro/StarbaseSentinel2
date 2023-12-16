@@ -19,16 +19,28 @@ public class Level1 extends Level {
 
     private void init() {
         // Add enemies
-        Tank tank1 = new Tank(-1, 4);
-//        Astronaut astronaut1 = new Astronaut(-1, 4);
-//        Astronaut astronaut2 = new Astronaut(-1, 4);
-//        Astronaut astronaut3 = new Astronaut(-1, 4);
+//        Tank tank1 = new Tank(-1, 4);
+        Astronaut a1 = new Astronaut(-1, 4);
+        Astronaut a2 = new Astronaut(-1, 4);
+        Astronaut a3 = new Astronaut(-1, 4);
+        Astronaut a4 = new Astronaut(-1, 4);
+        Astronaut a5 = new Astronaut(-1, 4);
+        Astronaut a6 = new Astronaut(-1, 4);
+        Astronaut a7 = new Astronaut(-1, 4);
+        Astronaut a8 = new Astronaut(-1, 4);
+
 
         // Add enemies to ArrayList
-        enemies.add(tank1);
-//        enemies.add(astronaut1);
-//        enemies.add(astronaut2);
-//        enemies.add(astronaut3);
+//        enemies.add(tank1);
+        enemies.add(a1);
+        enemies.add(a2);
+        enemies.add(a3);
+        enemies.add(a4);
+        enemies.add(a5);
+        enemies.add(a6);
+        enemies.add(a7);
+        enemies.add(a8);
+
 
         // Set path for the level
         Path path = new Path(); // arraylist din lang to, di ko alam kung magandang abstraction yes i agree
@@ -57,7 +69,7 @@ public class Level1 extends Level {
 
         // Create tower
         Basic basic = new Basic();
-        basic.place(5,3);
+        basic.place(2,3);
 
         towers.add(basic);
     }
@@ -97,15 +109,20 @@ public class Level1 extends Level {
         enemies.getFirst().render(gc);
 
         // Render astronauts with 5-second delay
-        if (enemies.size() > 1 && System.currentTimeMillis() - this.startTime > 5000) {
-            enemies.get(1).render(gc);
-        }
-        if (enemies.size() > 2 && System.currentTimeMillis() - startTime > 6000) {
-            enemies.get(2).render(gc);
-        }
-        if (enemies.size() > 3 && System.currentTimeMillis() - startTime > 7000) {
-            enemies.get(3).render(gc);
-        }
 
+//        if (enemies.size() > 1 && System.currentTimeMillis() - this.startTime > 5000) {
+//            enemies.get(1).render(gc);
+//        }
+//        if (enemies.size() > 2 && System.currentTimeMillis() - startTime > 6000) {
+//            enemies.get(2).render(gc);
+//        }
+//        if (enemies.size() > 3 && System.currentTimeMillis() - startTime > 7000) {
+//            enemies.get(3).render(gc);
+//        }
+        for (int i = 1; i < enemies.size(); i++) {
+            if (System.currentTimeMillis() - startTime > (i + 1) * 1000) {
+                enemies.get(i).render(gc);
+            }
+        }
     }
 }

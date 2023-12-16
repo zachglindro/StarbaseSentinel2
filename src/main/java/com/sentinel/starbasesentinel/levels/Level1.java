@@ -42,7 +42,7 @@ public class Level1 extends Level {
             enemy.setPath(path.get());
         }
 
-        // Test tower behavior
+        // Create tower
         Basic basic = new Basic();
         basic.place(5,3);
 
@@ -59,6 +59,7 @@ public class Level1 extends Level {
 
         // Render towers
         for (Tower tower : towers) {
+            tower.update(enemies);
             tower.render(gc);
         }
 

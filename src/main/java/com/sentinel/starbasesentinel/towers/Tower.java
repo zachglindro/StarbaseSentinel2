@@ -1,9 +1,12 @@
 package com.sentinel.starbasesentinel.towers;
 
 import com.sentinel.starbasesentinel.Grid;
+import com.sentinel.starbasesentinel.enemies.Enemy;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
+import java.util.ArrayList;
 
 public abstract class Tower {
     protected Image image;
@@ -20,6 +23,21 @@ public abstract class Tower {
     // Place a tower on the grid
     public void place(int x, int y) {
         position = Grid.translateToCoords(x, y);
+    }
+
+    private boolean hasEnemyInRange(ArrayList<Enemy> enemies) {
+        for (Enemy enemy : enemies) {
+            if (position.distance(enemy.getPosition()) <= range) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void update(ArrayList<Enemy> enemies) {
+        if (hasEnemyInRange(enemies)) {
+            System.out.println("Enemy in range");
+        }
     }
 
     public void render(GraphicsContext gc) {

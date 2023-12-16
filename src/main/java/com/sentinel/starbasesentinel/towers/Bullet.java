@@ -1,16 +1,15 @@
 package com.sentinel.starbasesentinel.towers;
 
 import com.sentinel.starbasesentinel.Grid;
-import com.sentinel.starbasesentinel.enemies.Enemy;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Bullet {
-    private Image image;
+    private final Image image;
     private Point2D position;
     private Point2D target;
-    private double speed;
+    private final double speed;
 
     public Bullet(Point2D position, Point2D target) {
         this.position = position;

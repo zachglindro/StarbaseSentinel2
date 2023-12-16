@@ -13,16 +13,16 @@ import javafx.scene.paint.Color;
 public class Level1 extends Level {
 
     public Level1() {
-        super(new Image("file:src/main/resources/gridpathtest.png"));
+        super(new Image("file:src/main/resources/levels/level1.png"));
         init();
     }
 
     private void init() {
         // Add enemies
-        Tank tank1 = new Tank(-1, 3);
-        Astronaut astronaut1 = new Astronaut(-1, 3);
-        Astronaut astronaut2 = new Astronaut(-1, 3);
-        Astronaut astronaut3 = new Astronaut(-1, 3);
+        Tank tank1 = new Tank(-1, 4);
+        Astronaut astronaut1 = new Astronaut(-1, 4);
+        Astronaut astronaut2 = new Astronaut(-1, 4);
+        Astronaut astronaut3 = new Astronaut(-1, 4);
 
         // Add enemies to ArrayList
         enemies.add(tank1);
@@ -31,12 +31,24 @@ public class Level1 extends Level {
         enemies.add(astronaut3);
 
         // Set path for the level
-        Path path = new Path(); // arraylist din lang to, di ko alam kung magandang abstraction
-        path.add(5, 3);
-        path.add(5, 6);
-        path.add(8, 6);
-        path.add(8, 3);
-        path.add(5, 3);
+        Path path = new Path(); // arraylist din lang to, di ko alam kung magandang abstraction yes i agree
+        path.add(5, 4);
+        path.add(5, 13);
+        path.add(9, 13);
+        path.add(9, 1);
+        path.add(13, 1);
+        path.add(13, 6);
+        path.add(17, 6);
+        path.add(17, 1);
+        path.add(21, 1);
+        path.add(21, 8);
+        path.add(25, 8);
+
+
+
+
+
+
 
         // Set path for each enemy
         for (Enemy enemy : enemies) {

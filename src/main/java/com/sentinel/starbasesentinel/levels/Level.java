@@ -5,7 +5,6 @@ import com.sentinel.starbasesentinel.towers.Bullet;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -16,6 +15,7 @@ public abstract class Level {
     protected Image bg;
     protected ArrayList<Enemy> enemies;
     protected ArrayList<Tower> towers;
+    protected ArrayList<Bullet> bullets;
 
     public Level(Image bg) {
         this.startTime = System.currentTimeMillis();

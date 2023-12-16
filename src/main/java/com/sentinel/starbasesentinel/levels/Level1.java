@@ -59,7 +59,7 @@ public class Level1 extends Level {
 
         // Render towers
         for (Tower tower : towers) {
-            tower.render(gc, enemies);
+            tower.render(gc);
         }
 
         // Render tank

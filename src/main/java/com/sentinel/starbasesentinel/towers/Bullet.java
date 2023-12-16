@@ -7,24 +7,26 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Bullet {
-    Image image;
-    Point2D position;
-    Point2D target;
+    private Image image;
+    private Point2D position;
+    private Point2D target;
+    private double speed;
 
     public Bullet(Point2D position, Point2D target) {
         this.position = position;
         this.target = target;
+
+        this.speed = 0.5;
         this.image = new Image("file:src/main/resources/towers/bullet.gif");
     }
 
     public void move() {
-        double x = target.getX() - position.getX();
-        double y = target.getY() - position.getY();
-        double magnitude = Math.sqrt(x*x + y*y);
-        double speed = Grid.translateToCoords(0.5);
-        double dx = x / magnitude * speed;
-        double dy = y / magnitude * speed;
-        position = position.add(dx, dy);
+        if (position.distance(target) < 1) {
+            return;
+        }
+
+        double angle = Math.atan2(target.getY() - position.getY(), target.getX() - position.getX());
+        position = position.add(speed * Math.cos(angle), speed * Math.sin(angle));
     }
 
     public void render(GraphicsContext gc) {

@@ -4,7 +4,7 @@ import com.sentinel.starbasesentinel.enemies.Astronaut;
 import com.sentinel.starbasesentinel.enemies.AstronautFast;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.enemies.Tank;
-import com.sentinel.starbasesentinel.towers.Basic;
+import com.sentinel.starbasesentinel.towers.BasicTower;
 import com.sentinel.starbasesentinel.towers.Bullet;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
@@ -67,7 +67,7 @@ public class Level1 extends Level {
         }
 
         // Create tower
-        Basic basic = new Basic();
+        BasicTower basic = new BasicTower();
         basic.place(2,3);
 
         towers.add(basic);
@@ -80,6 +80,7 @@ public class Level1 extends Level {
         }
         // Is outside loop to prevent ConcurrentModificationException
         bullets.removeIf(Bullet::isMarkedForDeletion);
+        enemies.removeIf(Enemy::isMarkedForDeletion);
 
         for (Tower tower : towers) {
             tower.update(enemies, bullets);
@@ -104,23 +105,10 @@ public class Level1 extends Level {
             bullet.render(gc);
         }
 
-        // Render tank
-//        enemies.getFirst().render(gc);
-
-        // Render astronauts with 5-second delay
-
-//        if (enemies.size() > 1 && System.currentTimeMillis() - this.startTime > 5000) {
-//            enemies.get(1).render(gc);
-//        }
-//        if (enemies.size() > 2 && System.currentTimeMillis() - startTime > 6000) {
-//            enemies.get(2).render(gc);
-//        }
-//        if (enemies.size() > 3 && System.currentTimeMillis() - startTime > 7000) {
-//            enemies.get(3).render(gc);
-//        }
-        for (int i = 0; i < enemies.size(); i++) { // loop for rendering enemy batch
-            if (System.currentTimeMillis() - startTime > (i + 1) * 1000) {
-                enemies.get(i).render(gc);
+        // Render enemies with 1 second duration in between
+        for (Enemy enemy : enemies) {
+            if (System.currentTimeMillis() - startTime > (enemies.indexOf(enemy) + 1) * 1000L) {
+                enemy.render(gc);
             }
         }
     }

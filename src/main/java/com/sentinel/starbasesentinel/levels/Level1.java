@@ -1,6 +1,7 @@
 package com.sentinel.starbasesentinel.levels;
 
 import com.sentinel.starbasesentinel.enemies.Astronaut;
+import com.sentinel.starbasesentinel.enemies.AstronautFast;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.enemies.Tank;
 import com.sentinel.starbasesentinel.towers.Basic;
@@ -19,7 +20,7 @@ public class Level1 extends Level {
 
     private void init() {
         // Add enemies
-//        Tank tank1 = new Tank(-1, 4);
+        Tank tank1 = new Tank(-1, 4);
         Astronaut a1 = new Astronaut(-1, 4);
         Astronaut a2 = new Astronaut(-1, 4);
         Astronaut a3 = new Astronaut(-1, 4);
@@ -29,9 +30,10 @@ public class Level1 extends Level {
         Astronaut a7 = new Astronaut(-1, 4);
         Astronaut a8 = new Astronaut(-1, 4);
 
+        AstronautFast f1 = new AstronautFast(-1,4);
+
 
         // Add enemies to ArrayList
-//        enemies.add(tank1);
         enemies.add(a1);
         enemies.add(a2);
         enemies.add(a3);
@@ -40,6 +42,9 @@ public class Level1 extends Level {
         enemies.add(a6);
         enemies.add(a7);
         enemies.add(a8);
+        enemies.add(f1);
+        enemies.add(tank1);
+
 
 
         // Set path for the level
@@ -119,7 +124,7 @@ public class Level1 extends Level {
 //        if (enemies.size() > 3 && System.currentTimeMillis() - startTime > 7000) {
 //            enemies.get(3).render(gc);
 //        }
-        for (int i = 0; i < enemies.size(); i++) {
+        for (int i = 0; i < enemies.size(); i++) { // loop for rendering enemy batch
             if (System.currentTimeMillis() - startTime > (i + 1) * 1000) {
                 enemies.get(i).render(gc);
             }

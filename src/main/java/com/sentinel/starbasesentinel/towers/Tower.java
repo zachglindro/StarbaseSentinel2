@@ -5,6 +5,7 @@ import com.sentinel.starbasesentinel.enemies.Enemy;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -68,8 +69,18 @@ public abstract class Tower {
     }
 
     public void render(GraphicsContext gc) {
+        // draw range circle
+        gc.setStroke(Color.GREEN);
+        gc.setLineWidth(1.0);
+        gc.strokeOval(
+                position.getX() - range,
+                position.getY() - range,
+                2 * range,
+                2 * range);
+
+        // Draw the tower image
         gc.drawImage(image,
-                position.getX()-image.getWidth()/2,
-                position.getY()-image.getHeight()/2);
+                position.getX() - image.getWidth() / 2,
+                position.getY() - image.getHeight() / 2);
     }
 }

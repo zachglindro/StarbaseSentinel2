@@ -50,6 +50,17 @@ public class Level1 extends Level {
         towers.add(basic);
     }
 
+    public void update() {
+
+        for (Bullet bullet : bullets) {
+            bullet.update(bullets);
+        }
+
+        for (Tower tower : towers) {
+            tower.update(enemies, bullets);
+        }
+    }
+
     @Override
     public void render(GraphicsContext gc) {
         // Render background color of level
@@ -60,7 +71,6 @@ public class Level1 extends Level {
 
         // Render towers
         for (Tower tower : towers) {
-            tower.update(enemies, bullets);
             tower.render(gc);
         }
 

@@ -21,6 +21,7 @@ public class Game {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                level.update();
                 level.render(gc);
             }
         };

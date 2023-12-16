@@ -5,6 +5,8 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
+
 public class Bullet {
     private final Image image;
     private Point2D position;
@@ -28,8 +30,15 @@ public class Bullet {
         position = position.add(speed * Math.cos(angle), speed * Math.sin(angle));
     }
 
-    public void render(GraphicsContext gc) {
+    public void update(ArrayList<Bullet> existingBullets) {
         move();
+
+
+        existingBullets.removeIf(bullet -> bullet.position.distance(bullet.target) < 1);
+        // TODO: add damage to enemy, show explosion?
+    }
+
+    public void render(GraphicsContext gc) {
         gc.drawImage(image, position.getX()- Grid.translateToGrid(0.5), position.getY()-Grid.translateToGrid(0.5));
     }
 }

@@ -69,9 +69,13 @@ public abstract class Enemy {
         return position;
     }
 
+    private void update() {
+        move();
+    }
+
     // Renders the enemy
     public void render(GraphicsContext gc) {
-        move();
+        update();
 
         // Get a snapshot of the rotated image with a transparent background
         SnapshotParameters params = new SnapshotParameters();

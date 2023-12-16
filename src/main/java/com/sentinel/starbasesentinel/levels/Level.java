@@ -26,5 +26,7 @@ public abstract class Level {
         this.bullets = new ArrayList<>();
     }
 
+    public abstract void update();
+
     public abstract void render(GraphicsContext gc);
 }

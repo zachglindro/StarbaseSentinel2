@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 public class Bullet {
     private final Image image;
     private Point2D position;
-    private Point2D target;
+    private final Point2D target;
     private final double speed;
 
     public Bullet(Point2D position, Point2D target) {
@@ -19,7 +19,7 @@ public class Bullet {
         this.image = new Image("file:src/main/resources/towers/bullet.gif");
     }
 
-    public void move() {
+    private void move() {
         if (position.distance(target) < 1) {
             return;
         }

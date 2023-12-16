@@ -23,6 +23,7 @@ public abstract class Level {
 
         this.enemies = new ArrayList<>();
         this.towers = new ArrayList<>();
+        this.bullets = new ArrayList<>();
     }
 
     public abstract void render(GraphicsContext gc);

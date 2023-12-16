@@ -4,6 +4,7 @@ import com.sentinel.starbasesentinel.enemies.Astronaut;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.enemies.Tank;
 import com.sentinel.starbasesentinel.towers.Basic;
+import com.sentinel.starbasesentinel.towers.Bullet;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -59,8 +60,13 @@ public class Level1 extends Level {
 
         // Render towers
         for (Tower tower : towers) {
-            tower.update(enemies);
+            tower.update(enemies, bullets);
             tower.render(gc);
+        }
+
+        // Render bullets
+        for (Bullet bullet : bullets) {
+            bullet.render(gc);
         }
 
         // Render tank

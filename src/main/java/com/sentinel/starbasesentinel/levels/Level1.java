@@ -106,7 +106,7 @@ public class Level1 extends Level {
         }
 
         // Render tank
-        enemies.getFirst().render(gc);
+//        enemies.getFirst().render(gc);
 
         // Render astronauts with 5-second delay
 
@@ -119,7 +119,7 @@ public class Level1 extends Level {
 //        if (enemies.size() > 3 && System.currentTimeMillis() - startTime > 7000) {
 //            enemies.get(3).render(gc);
 //        }
-        for (int i = 1; i < enemies.size(); i++) {
+        for (int i = 0; i < enemies.size(); i++) {
             if (System.currentTimeMillis() - startTime > (i + 1) * 1000) {
                 enemies.get(i).render(gc);
             }

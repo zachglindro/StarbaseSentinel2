@@ -48,7 +48,7 @@ public class Level1 extends Level {
 
 
         // Set path for the level
-        Path path = new Path(); // arraylist din lang to, di ko alam kung magandang abstraction yes i agree
+        Path path = new Path();
         path.add(5, 4);
         path.add(5, 13);
         path.add(9, 13);
@@ -61,13 +61,7 @@ public class Level1 extends Level {
         path.add(21, 8);
         path.add(25, 8);
 
-
-
-
-
-
-
-//         Set path for each enemy
+        // Set path for each enemy
         for (Enemy enemy : enemies) {
             enemy.setPath(path.get());
         }

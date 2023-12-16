@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public abstract class Tower {
     protected Image image;
     protected Point2D position;
-    protected double range;
-    protected double cooldownTime;
-    protected long lastShotTime;
+    protected double range; // range of tower. used in detecting nearby enemies
+    protected double cooldownTime; // cooldown time between tower's shots
+    protected long lastShotTime; // tracks when tower last fired its projectile
 
     protected Tower(Image image, double range, double cooldownTime) {
         this.image = image;

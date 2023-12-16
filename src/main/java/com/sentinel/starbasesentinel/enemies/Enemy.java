@@ -21,6 +21,7 @@ public abstract class Enemy {
     protected int damage; // damage when enemy reaches base // di ko pa ginagamit
     protected ArrayList<Point2D> path;
     protected final Boolean doNotRotate;
+    protected boolean markForDeletion;
 
     protected Enemy(Image image, int health, double x, double y, double speed, Boolean doNotRotate) {
         this.doNotRotate = doNotRotate;
@@ -29,12 +30,13 @@ public abstract class Enemy {
         this.speed = speed;
         this.health = health;
         this.path = new ArrayList<>();
+
+        this.markForDeletion = false;
     }
 
     protected Enemy(Image image, int health, double x, double y, double speed) {
         this(image, health, x, y, speed, false);
     }
-
 
     public int getHealth(){
         return this.health;
@@ -42,7 +44,12 @@ public abstract class Enemy {
 
     public void updateHealth(int value){
         this.health += value;
+
+        if (this.health <= 0) {
+            markForDeletion = true;
+        }
     }
+
     // Move enemy towards next point in path
     private void move() {
         // If the enemy has reached the end of the path, do nothing
@@ -74,6 +81,11 @@ public abstract class Enemy {
 
     public void setPath(ArrayList<Point2D> path) {
         this.path = path;
+    }
+
+    public boolean isMarkedForDeletion() {
+        return markForDeletion;
+        // TODO: add coins to player
     }
 
     // Gets the current position of the enemy

@@ -20,15 +20,15 @@ public class Level1 extends Level {
     private void init() {
         // Add enemies
         Tank tank1 = new Tank(-1, 4);
-        Astronaut astronaut1 = new Astronaut(-1, 4);
-        Astronaut astronaut2 = new Astronaut(-1, 4);
-        Astronaut astronaut3 = new Astronaut(-1, 4);
+//        Astronaut astronaut1 = new Astronaut(-1, 4);
+//        Astronaut astronaut2 = new Astronaut(-1, 4);
+//        Astronaut astronaut3 = new Astronaut(-1, 4);
 
         // Add enemies to ArrayList
         enemies.add(tank1);
-        enemies.add(astronaut1);
-        enemies.add(astronaut2);
-        enemies.add(astronaut3);
+//        enemies.add(astronaut1);
+//        enemies.add(astronaut2);
+//        enemies.add(astronaut3);
 
         // Set path for the level
         Path path = new Path(); // arraylist din lang to, di ko alam kung magandang abstraction yes i agree
@@ -50,7 +50,7 @@ public class Level1 extends Level {
 
 
 
-        // Set path for each enemy
+//         Set path for each enemy
         for (Enemy enemy : enemies) {
             enemy.setPath(path.get());
         }
@@ -97,14 +97,15 @@ public class Level1 extends Level {
         enemies.getFirst().render(gc);
 
         // Render astronauts with 5-second delay
-        if (System.currentTimeMillis() - this.startTime > 5000) {
+        if (enemies.size() > 1 && System.currentTimeMillis() - this.startTime > 5000) {
             enemies.get(1).render(gc);
         }
-        if (System.currentTimeMillis() - startTime > 6000) {
+        if (enemies.size() > 2 && System.currentTimeMillis() - startTime > 6000) {
             enemies.get(2).render(gc);
         }
-        if (System.currentTimeMillis() - startTime > 7000) {
+        if (enemies.size() > 3 && System.currentTimeMillis() - startTime > 7000) {
             enemies.get(3).render(gc);
         }
+
     }
 }

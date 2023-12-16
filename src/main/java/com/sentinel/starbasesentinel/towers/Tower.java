@@ -61,7 +61,7 @@ public abstract class Tower {
             // If the tower can fire a bullet
             if (System.currentTimeMillis() - lastShotTime >= cooldownTime * 1000) {
                 // Fire a bullet
-                bullets.add(new Bullet(position, nearestEnemy.getPosition()));
+                bullets.add(new Bullet(position, nearestEnemy));
                 lastShotTime = System.currentTimeMillis();
             }
         }

@@ -53,8 +53,10 @@ public class Level1 extends Level {
     public void update() {
 
         for (Bullet bullet : bullets) {
-            bullet.update(bullets);
+            bullet.update();
         }
+        // Is outside loop to prevent ConcurrentModificationException
+        bullets.removeIf(Bullet::isMarkedForDeletion);
 
         for (Tower tower : towers) {
             tower.update(enemies, bullets);

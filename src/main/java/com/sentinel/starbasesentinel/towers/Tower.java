@@ -23,6 +23,8 @@ public abstract class Tower {
     }
 
     public void render(GraphicsContext gc) {
-        gc.drawImage(image, position.getX()-image.getWidth()/2, position.getY()-image.getHeight()/2);
+        gc.drawImage(image,
+                position.getX()-image.getWidth()/2,
+                position.getY()-image.getHeight()/2);
     }
 }

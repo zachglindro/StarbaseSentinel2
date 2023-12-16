@@ -15,22 +15,34 @@ public abstract class Enemy {
     protected ImageView imageView;
     protected final double speed;
     protected Point2D position;
+
+    protected int health;
+
+    protected int damage; // damage when enemy reaches base // di ko pa ginagamit
     protected ArrayList<Point2D> path;
     protected final Boolean doNotRotate;
 
-    protected Enemy(Image image, double x, double y, double speed, Boolean doNotRotate) {
+    protected Enemy(Image image, int health, double x, double y, double speed, Boolean doNotRotate) {
         this.doNotRotate = doNotRotate;
         this.imageView = new ImageView(image);
         this.position = Grid.translateToCoords(x, y);
         this.speed = speed;
-
+        this.health = health;
         this.path = new ArrayList<>();
     }
 
-    protected Enemy(Image image, double x, double y, double speed) {
-        this(image, x, y, speed, false);
+    protected Enemy(Image image, int health, double x, double y, double speed) {
+        this(image, health, x, y, speed, false);
     }
 
+
+    public int getHealth(){
+        return this.health;
+    }
+
+    public void updateHealth(int value){
+        this.health += value;
+    }
     // Move enemy towards next point in path
     private void move() {
         // If the enemy has reached the end of the path, do nothing

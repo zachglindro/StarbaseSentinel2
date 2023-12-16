@@ -42,6 +42,9 @@ public class Bullet {
 
         if (position.distance(target.getPosition()) < 1) {
             markForDeletion = true; // used i
+            System.out.println("target hit; old health: " + target.getHealth());
+            target.updateHealth(-1); // -1 placeholder for damage
+            System.out.println("new target health: " + target.getHealth());
         }
         // TODO: add damage to enemy, show explosion?
     }

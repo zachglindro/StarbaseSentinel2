@@ -4,7 +4,6 @@ import com.sentinel.starbasesentinel.enemies.Astronaut;
 import com.sentinel.starbasesentinel.enemies.AstronautFast;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.enemies.Tank;
-import com.sentinel.starbasesentinel.towers.BasicTower;
 import com.sentinel.starbasesentinel.towers.Bullet;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,17 +20,7 @@ public class Level1 extends Level {
     protected void init() {
         initEnemies();
         initPath();
-
-        // Set path for each enemy
-        for (Enemy enemy : enemies) {
-            enemy.setPath(path.get());
-        }
-
-        // Create tower
-        BasicTower basic = new BasicTower();
-        basic.place(2,3);
-
-        towers.add(basic);
+        initPlots();
     }
 
     @Override
@@ -76,6 +65,16 @@ public class Level1 extends Level {
         path.add(21, 1);
         path.add(21, 8);
         path.add(25, 8);
+
+        // Set path for each enemy
+        for (Enemy enemy : enemies) {
+            enemy.setPath(path.get());
+        }
+    }
+
+    @Override
+    protected void initPlots() {
+        // TODO: add plots
     }
 
     @Override
@@ -83,6 +82,7 @@ public class Level1 extends Level {
         for (Bullet bullet : bullets) {
             bullet.update();
         }
+
         // Is outside loop to prevent ConcurrentModificationException
         bullets.removeIf(Bullet::isMarkedForDeletion);
         enemies.removeIf(Enemy::isMarkedForDeletion);

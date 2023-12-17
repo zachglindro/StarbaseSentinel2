@@ -18,7 +18,25 @@ public class Level1 extends Level {
         init();
     }
 
-    private void init() {
+    @Override
+    protected void init() {
+        initEnemies();
+        initPath();
+
+        // Set path for each enemy
+        for (Enemy enemy : enemies) {
+            enemy.setPath(path.get());
+        }
+
+        // Create tower
+        BasicTower basic = new BasicTower();
+        basic.place(2,3);
+
+        towers.add(basic);
+    }
+
+    @Override
+    protected void initEnemies() {
         // Add enemies
         Tank tank1 = new Tank(-1, 4);
         Astronaut a1 = new Astronaut(-1, 4);
@@ -44,11 +62,10 @@ public class Level1 extends Level {
         enemies.add(a8);
         enemies.add(f1);
         enemies.add(tank1);
+    }
 
-
-
-        // Set path for the level
-        Path path = new Path();
+    @Override
+    protected void initPath() {
         path.add(5, 4);
         path.add(5, 13);
         path.add(9, 13);
@@ -60,21 +77,10 @@ public class Level1 extends Level {
         path.add(21, 1);
         path.add(21, 8);
         path.add(25, 8);
-
-        // Set path for each enemy
-        for (Enemy enemy : enemies) {
-            enemy.setPath(path.get());
-        }
-
-        // Create tower
-        BasicTower basic = new BasicTower();
-        basic.place(2,3);
-
-        towers.add(basic);
     }
 
+    @Override
     public void update() {
-
         for (Bullet bullet : bullets) {
             bullet.update();
         }
@@ -91,8 +97,6 @@ public class Level1 extends Level {
     public void render(GraphicsContext gc) {
         // Render background color of level
         gc.clearRect(0, 0, WIDTH, HEIGHT);
-        gc.setFill(Color.web("#1b1a17")); // kulay ng slides ni sir jm
-        gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.drawImage(bg,0,0);
 
         // Render towers

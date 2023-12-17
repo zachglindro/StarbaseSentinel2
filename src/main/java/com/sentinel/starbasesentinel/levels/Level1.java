@@ -9,7 +9,6 @@ import com.sentinel.starbasesentinel.towers.Bullet;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 public class Level1 extends Level {
 

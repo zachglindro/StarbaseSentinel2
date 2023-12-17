@@ -6,3 +6,6 @@ A tower-defense game.
 - Add coins upon enemy death
 - Add cost to towers
 - Level 2
+
+# Known bugs
+- Main game window needs to be moved

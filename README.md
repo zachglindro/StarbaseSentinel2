@@ -9,3 +9,6 @@ A tower-defense game.
 
 # Known bugs
 - Main game window needs to be moved
+
+# QoL
+- Multithreading?

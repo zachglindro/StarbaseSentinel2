@@ -1,7 +1,6 @@
 package com.sentinel.starbasesentinel;
 
 import com.sentinel.starbasesentinel.levels.Level1;
-import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -16,20 +15,15 @@ public class Game {
         Canvas field = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = field.getGraphicsContext2D();
 
+        Group group = new Group(field);
+        Scene game = new Scene(group);
+
         Level1 level = new Level1();
 
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                level.update();
-                level.render(gc);
-            }
-        };
+        GameTimer timer = new GameTimer(level, game, gc);
 
         timer.start();
 
-        Group group = new Group(field);
-        Scene game = new Scene(group);
         stage.setScene(game);
         stage.show();
     }

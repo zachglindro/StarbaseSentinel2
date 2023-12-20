@@ -5,6 +5,7 @@ import com.sentinel.starbasesentinel.enemies.AstronautFast;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.enemies.Tank;
 import com.sentinel.starbasesentinel.towers.Bullet;
+import com.sentinel.starbasesentinel.towers.Plot;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -74,22 +75,7 @@ public class Level1 extends Level {
 
     @Override
     protected void initPlots() {
-        // TODO: add plots
-    }
-
-    @Override
-    public void update() {
-        for (Bullet bullet : bullets) {
-            bullet.update();
-        }
-
-        // Is outside loop to prevent ConcurrentModificationException
-        bullets.removeIf(Bullet::isMarkedForDeletion);
-        enemies.removeIf(Enemy::isMarkedForDeletion);
-
-        for (Tower tower : towers) {
-            tower.update(enemies, bullets);
-        }
+        plots.add(new Plot(2,3));
     }
 
     @Override

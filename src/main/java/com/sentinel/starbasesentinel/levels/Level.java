@@ -2,10 +2,10 @@ package com.sentinel.starbasesentinel.levels;
 
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.towers.Bullet;
+import com.sentinel.starbasesentinel.towers.Plot;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public abstract class Level {
     protected ArrayList<Enemy> enemies;
     protected ArrayList<Tower> towers;
     protected ArrayList<Bullet> bullets;
-    protected ArrayList<Rectangle> plots;
+    protected ArrayList<Plot> plots;
 
     public Level(Image bg) {
         this.startTime = System.currentTimeMillis();
@@ -36,6 +36,21 @@ public abstract class Level {
     protected abstract void initEnemies(); // initialize enemies to spawn for the level
     protected abstract void initPath(); // initialize path for the level
     protected abstract void initPlots(); // initialize plots for the level
-    public abstract void update();
+    public void update() {
+        for (Bullet bullet : bullets) {
+            bullet.update();
+        }
+
+        // Is outside loop to prevent ConcurrentModificationException
+        bullets.removeIf(Bullet::isMarkedForDeletion);
+        enemies.removeIf(Enemy::isMarkedForDeletion);
+
+        for (Tower tower : towers) {
+            tower.update(enemies, bullets);
+        }
+    }
     public abstract void render(GraphicsContext gc);
+    public ArrayList<Plot> getPlots() {
+        return plots;
+    }
 }

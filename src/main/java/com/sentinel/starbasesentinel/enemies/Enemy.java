@@ -17,11 +17,12 @@ public abstract class Enemy {
     protected Point2D position;
     protected int health;
     protected int reward;
-    protected int damage; // damage when enemy reaches base // di ko pa ginagamit
     protected ArrayList<Point2D> path;
     protected boolean doNotRotate;
     protected boolean markForDeletion;
     protected boolean spawned = false;
+
+    protected boolean pathEnded;
 
     protected Enemy(Image image, double x, double y, int health, int reward, double speed, boolean doNotRotate) {
         this.health = health;
@@ -119,5 +120,10 @@ public abstract class Enemy {
 
     public int getReward() {
         return reward;
+    }
+
+
+    public boolean hasReachedLastPoint(){
+        return path.isEmpty();
     }
 }

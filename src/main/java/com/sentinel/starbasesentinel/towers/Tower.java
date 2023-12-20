@@ -15,11 +15,13 @@ public abstract class Tower {
     protected double range; // range of tower. used in detecting nearby enemies
     protected double cooldownTime; // cooldown time between tower's shots
     protected long lastShotTime; // tracks when tower last fired its projectile
+    protected int damage;
 
-    protected Tower(Image image, double range, int cost, double cooldownTime) {
+    protected Tower(Image image, double range, int cost, double cooldownTime, int damage) {
         this.image = image;
         this.range = Grid.translateToCoords(range);
         this.cooldownTime = cooldownTime;
+        this.damage = damage;
     }
 
     // Place a tower on the grid
@@ -62,7 +64,7 @@ public abstract class Tower {
             // If the tower can fire a bullet
             if (System.currentTimeMillis() - lastShotTime >= cooldownTime * 1000) {
                 // Fire a bullet
-                bullets.add(new Bullet(position, nearestEnemy));
+                bullets.add(new Bullet(position, nearestEnemy, damage));
                 lastShotTime = System.currentTimeMillis();
             }
         }

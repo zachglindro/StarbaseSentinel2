@@ -1,14 +1,14 @@
 package com.sentinel.starbasesentinel;
 
 public class Player {
-    private final int enemiesInfiltrated;
+    private int enemiesInfiltrated;
     private final static  int maxEnemiesInfiltrated = 3;
     private int coins;
     private String gameOver;
 
     public Player() {
         enemiesInfiltrated = 0;
-        coins = 200;
+        coins = 200000;
         gameOver = "";
     }
 
@@ -42,5 +42,9 @@ public class Player {
 
     public static int getMaxEnemiesInfiltrated() {
         return maxEnemiesInfiltrated;
+    }
+
+    public void incrementEnemiesInfiltrated(){
+        this.enemiesInfiltrated += 1;
     }
 }

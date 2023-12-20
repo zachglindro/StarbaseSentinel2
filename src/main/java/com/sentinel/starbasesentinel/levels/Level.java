@@ -2,10 +2,7 @@ package com.sentinel.starbasesentinel.levels;
 
 import com.sentinel.starbasesentinel.Player;
 import com.sentinel.starbasesentinel.enemies.Enemy;
-import com.sentinel.starbasesentinel.towers.BasicTower;
-import com.sentinel.starbasesentinel.towers.Bullet;
-import com.sentinel.starbasesentinel.towers.Plot;
-import com.sentinel.starbasesentinel.towers.Tower;
+import com.sentinel.starbasesentinel.towers.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -79,5 +76,19 @@ public abstract class Level {
         Tower tower = new BasicTower();
         tower.place(x, y);
         towers.add(tower);
+    }
+
+    public void addSpeedTower(double x, double y){
+        Tower tower = new SpeedTower();
+        tower.place(x,y);
+        towers.add(tower);
+    }
+
+    public void checkEnemiesInfiltrated(Player player){
+        for(Enemy enemy : enemies){
+            if(enemy.hasReachedLastPoint()){
+                player.incrementEnemiesInfiltrated();
+            }
+        }
     }
 }

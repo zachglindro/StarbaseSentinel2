@@ -13,13 +13,16 @@ public class Bullet {
     private final double speed;
     private boolean markForDeletion;
 
-    public Bullet(Point2D position, Enemy target) {
+    private int damage;
+
+    public Bullet(Point2D position, Enemy target, int damage) {
         this.position = position; // is initially the starting position, but is moved by this.move()
         this.target = target; // enemy to shoot
 
         this.speed = 0.5;
         this.image = new Image("file:src/main/resources/towers/bulletbasic.gif");
         this.markForDeletion = false;
+        this.damage = damage;
     }
 
     // Moves a bullet based on its current location to its target enemy
@@ -44,7 +47,7 @@ public class Bullet {
 
         if (position.distance(target.getPosition()) < 1) {
             markForDeletion = true;
-            target.updateHealth(-1);
+            target.updateHealth((-1)*damage);
         }
     }
 

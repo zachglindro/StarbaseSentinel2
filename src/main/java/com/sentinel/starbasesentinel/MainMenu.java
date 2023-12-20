@@ -19,9 +19,13 @@ import javafx.stage.Stage;
 public class MainMenu extends Application {
     private final Image backgroundImage = new Image("file:src/main/resources/simple-space2.png");
     private final ImageView background = new ImageView(backgroundImage);
+    private static Stage primaryStage;
 
     @Override
     public void start(Stage stage) {
+
+        primaryStage = stage; // store stage as a class-level variable para magamit sa ibang methods
+
         stage.setTitle("Starbase Sentinel");
         stage.setMinWidth(1280);
         stage.setMinHeight(720);
@@ -48,7 +52,7 @@ public class MainMenu extends Application {
         withLogo.setAlignment(Pos.CENTER);
 
         // Logo animation
-        double speed = 0.01; // Speed of animation
+        double speed = 0.05; // Speed of animation
         double maxHeight = 15;
         new AnimationTimer() {
             boolean movingUp = true;
@@ -135,7 +139,7 @@ public class MainMenu extends Application {
         Text zach = new Text("Zach Dwayne Glindro");
         Text zachFluff = new Text("Favorite game: Witcher 3");
         Text kervin = new Text("Kervin Ralph Samson");
-        Text kervinFluff = new Text("KebinFX");
+        Text kervinFluff = new Text("Gaming.");
 
         VBox developersContent = new VBox(developers, zach, zachFluff, kervin, kervinFluff);
 
@@ -186,10 +190,12 @@ public class MainMenu extends Application {
         withBackground.getChildren().addAll(new ImageView(new Image("file:src/main/resources/simple-space2.png")), bp);
 
         Scene endScene = new Scene(withBackground);
-        Stage endStage = new Stage();
-        endStage.setScene(endScene);
-        endStage.show();
+        primaryStage.setScene(endScene);
+//        Stage endStage = new Stage();
+//        endStage.setScene(endScene);
+//        endStage.show();
     }
+
 
     @Override
     public void stop() {

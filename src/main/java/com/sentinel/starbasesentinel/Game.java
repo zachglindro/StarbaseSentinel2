@@ -11,6 +11,11 @@ public class Game {
     private final static int WIDTH = 1280;
     private final static int HEIGHT = 720;
 
+
+//    public Game(Stage primaryStage){
+//        this.primaryStage = primaryStage;
+//    }
+
     public void start(Stage stage) {
         Canvas field = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = field.getGraphicsContext2D();

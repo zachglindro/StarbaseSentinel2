@@ -3,7 +3,7 @@ package com.sentinel.starbasesentinel.levels;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.towers.BasicTower;
 import com.sentinel.starbasesentinel.towers.Bullet;
-import com.sentinel.starbasesentinel.Plot;
+import com.sentinel.starbasesentinel.towers.Plot;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -55,6 +55,7 @@ public abstract class Level {
         return plots;
     }
 
+    // TODO: custom addAstronauts method para hindi repetitive yung pag-add nila
     public void addTower(double x, double y) {
         Tower tower = new BasicTower();
         tower.place(x, y);

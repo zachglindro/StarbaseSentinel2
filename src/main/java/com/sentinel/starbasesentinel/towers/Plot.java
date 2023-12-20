@@ -1,5 +1,6 @@
-package com.sentinel.starbasesentinel;
+package com.sentinel.starbasesentinel.towers;
 
+import com.sentinel.starbasesentinel.Grid;
 import javafx.geometry.Point2D;
 
 public class Plot {

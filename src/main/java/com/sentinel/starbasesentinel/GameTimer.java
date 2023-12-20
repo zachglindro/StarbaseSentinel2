@@ -1,6 +1,7 @@
 package com.sentinel.starbasesentinel;
 
 import com.sentinel.starbasesentinel.levels.Level;
+import com.sentinel.starbasesentinel.towers.Plot;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;

@@ -27,6 +27,7 @@ public class GameTimer extends AnimationTimer {
         level.update(player);
         level.render(gc);
         this.handleMouseEvent();
+        level.checkEnemiesInfiltrated(player);
 
         if (player.getEnemiesInfiltrated() >= Player.getMaxEnemiesInfiltrated()) {
             player.setGameOver("lost");

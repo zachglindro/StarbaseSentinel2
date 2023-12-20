@@ -46,5 +46,6 @@ public class Player {
 
     public void incrementEnemiesInfiltrated(){
         this.enemiesInfiltrated += 1;
+        System.out.println("Enemies infiltrated: "+enemiesInfiltrated);
     }
 }

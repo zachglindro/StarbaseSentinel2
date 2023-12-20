@@ -65,6 +65,8 @@ public abstract class Level {
         if (enemies.isEmpty()) {
             player.setGameOver("won");
         }
+
+        enemies.removeIf(Enemy::isMarkedForDeletion);
     }
     public abstract void render(GraphicsContext gc);
     public ArrayList<Plot> getPlots() {

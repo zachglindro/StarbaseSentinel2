@@ -58,9 +58,10 @@ public abstract class Enemy {
 
     // Move enemy towards next point in path
     public void move() {
-        // If the enemy has reached the end of the path, do nothing
+
         if (path.isEmpty()) {
-            // should do something here
+            // should do something here -> DONE
+            markForDeletion = true;
             return;
         }
 

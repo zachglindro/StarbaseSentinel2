@@ -1,7 +1,6 @@
 package com.sentinel.starbasesentinel;
 
 import com.sentinel.starbasesentinel.levels.Level;
-import com.sentinel.starbasesentinel.towers.Plot;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
@@ -36,9 +35,9 @@ public class GameTimer extends AnimationTimer {
                 if (plot.clicked(x, y) && !plot.isOccupied()) {
                     double plotX = plot.getGridPosition().getX();
                     double plotY = plot.getGridPosition().getY();
+
                     level.addTower(plotX, plotY);
                     plot.markAsOccupied();
-                    System.out.println("Placed tower at " + plotX + ", " + plotY);
                 }
             }
         });

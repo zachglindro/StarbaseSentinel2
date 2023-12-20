@@ -10,8 +10,6 @@ import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-import java.util.ArrayList;
-
 public class Level1 extends Level {
 
     public Level1() {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class GameTimer extends AnimationTimer {
     private final Level level;
-    private final Scene scene;
+    private Scene scene;
     private final GraphicsContext gc;
     private final Player player;
 
@@ -20,11 +20,20 @@ public class GameTimer extends AnimationTimer {
         this.gc = gc;
         this.player = new Player();
     }
+
     @Override
     public void handle(long l) {
         level.update(player);
         level.render(gc);
         this.handleMouseEvent();
+
+        if (player.getEnemiesInfiltrated() >= Player.getMaxEnemiesInfiltrated()) {
+            player.setGameOver("lost");
+        }
+
+        if (player.won() || player.lost()) {
+            this.stop();
+        }
     }
 
     // Logic for placing of towers
@@ -46,5 +55,19 @@ public class GameTimer extends AnimationTimer {
                 }
             }
         });
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public void stop() {
+        super.stop();
+        MainMenu mainMenu = new MainMenu();
+        if (player.won()) {
+            MainMenu.showEndScreen("You won!");
+        } else if (player.lost()) {
+            MainMenu.showEndScreen("You lost!");
+        }
     }
 }

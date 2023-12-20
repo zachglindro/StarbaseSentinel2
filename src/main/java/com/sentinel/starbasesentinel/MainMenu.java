@@ -17,8 +17,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainMenu extends Application {
-    final Image backgroundImage = new Image("file:src/main/resources/simple-space2.png");
-    ImageView background = new ImageView(backgroundImage);
+    private final Image backgroundImage = new Image("file:src/main/resources/simple-space2.png");
+    private final ImageView background = new ImageView(backgroundImage);
 
     @Override
     public void start(Stage stage) {
@@ -163,6 +163,32 @@ public class MainMenu extends Application {
         withBackground.getChildren().addAll(background, bp);
 
         return new Scene(withBackground);
+    }
+
+    public static void showEndScreen(String text) {
+        StackPane withBackground = new StackPane();
+        BorderPane bp = new BorderPane();
+
+        Text endText = new Text(text);
+        endText.setFont(Font.font(30));
+        endText.setFill(Color.WHITE);
+
+        Button backButton = new Button("Back");
+        backButton.getStylesheets().add("file:src/main/style/button-styles.css");
+        backButton.setOnAction(e -> bp.setCenter(new MainMenu().showMainMenu().getRoot()));
+
+        VBox endContent = new VBox(endText, backButton);
+        endContent.setAlignment(Pos.CENTER);
+        endContent.setSpacing(10);
+
+        bp.setCenter(endContent);
+
+        withBackground.getChildren().addAll(new ImageView(new Image("file:src/main/resources/simple-space2.png")), bp);
+
+        Scene endScene = new Scene(withBackground);
+        Stage endStage = new Stage();
+        endStage.setScene(endScene);
+        endStage.show();
     }
 
     @Override

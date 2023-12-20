@@ -63,6 +63,11 @@ public abstract class Level {
         for (Tower tower : towers) {
             tower.update(enemies, bullets);
         }
+
+        // Game over if all enemies are dead
+        if (enemies.isEmpty()) {
+            player.setGameOver("won");
+        }
     }
     public abstract void render(GraphicsContext gc);
     public ArrayList<Plot> getPlots() {

@@ -43,7 +43,7 @@ public class Level1 extends Level {
         Astronaut a8 = new Astronaut(-1, 4);
         AstronautFast f1 = new AstronautFast(-1,4);
         enemies.add(a1);
-        enemies.add(a2);
+        /*enemies.add(a2);
         enemies.add(a3);
         enemies.add(a4);
         enemies.add(a5);
@@ -51,7 +51,7 @@ public class Level1 extends Level {
         enemies.add(a7);
         enemies.add(a8);
         enemies.add(f1);
-        enemies.add(tank1);
+        enemies.add(tank1);*/
     }
 
     @Override

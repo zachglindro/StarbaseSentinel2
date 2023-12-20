@@ -3,7 +3,7 @@ package com.sentinel.starbasesentinel.levels;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.towers.BasicTower;
 import com.sentinel.starbasesentinel.towers.Bullet;
-import com.sentinel.starbasesentinel.towers.Plot;
+import com.sentinel.starbasesentinel.Plot;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

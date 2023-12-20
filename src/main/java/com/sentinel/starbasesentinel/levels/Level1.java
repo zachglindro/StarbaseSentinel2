@@ -5,10 +5,12 @@ import com.sentinel.starbasesentinel.enemies.AstronautFast;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.enemies.Tank;
 import com.sentinel.starbasesentinel.towers.Bullet;
-import com.sentinel.starbasesentinel.towers.Plot;
+import com.sentinel.starbasesentinel.Plot;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
+import java.util.ArrayList;
 
 public class Level1 extends Level {
 
@@ -26,7 +28,10 @@ public class Level1 extends Level {
 
     @Override
     protected void initEnemies() {
-        // Add enemies
+        wave1();
+    }
+
+    private void wave1() {
         Tank tank1 = new Tank(-1, 4);
         Astronaut a1 = new Astronaut(-1, 4);
         Astronaut a2 = new Astronaut(-1, 4);
@@ -36,11 +41,7 @@ public class Level1 extends Level {
         Astronaut a6 = new Astronaut(-1, 4);
         Astronaut a7 = new Astronaut(-1, 4);
         Astronaut a8 = new Astronaut(-1, 4);
-
         AstronautFast f1 = new AstronautFast(-1,4);
-
-
-        // Add enemies to ArrayList
         enemies.add(a1);
         enemies.add(a2);
         enemies.add(a3);

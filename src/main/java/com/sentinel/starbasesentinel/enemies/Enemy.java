@@ -21,6 +21,7 @@ public abstract class Enemy {
     protected ArrayList<Point2D> path;
     protected boolean doNotRotate;
     protected boolean markForDeletion;
+    protected boolean spawned = false;
 
     protected Enemy(Image image, double x, double y, int health, int reward, double speed, boolean doNotRotate) {
         this.health = health;
@@ -50,8 +51,12 @@ public abstract class Enemy {
         }
     }
 
+    public void spawn() {
+        spawned = true;
+    }
+
     // Move enemy towards next point in path
-    private void move() {
+    public void move() {
         // If the enemy has reached the end of the path, do nothing
         if (path.isEmpty()) {
             // should do something here
@@ -93,13 +98,14 @@ public abstract class Enemy {
         return position;
     }
 
-    private void update() {
-        move();
+    public void update() {
+        if (spawned) {
+            move();
+        }
     }
 
     // Renders the enemy
     public void render(GraphicsContext gc) {
-        update();
 
         // Get a snapshot of the rotated image with a transparent background
         SnapshotParameters params = new SnapshotParameters();

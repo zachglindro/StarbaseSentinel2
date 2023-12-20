@@ -1,5 +1,6 @@
 package com.sentinel.starbasesentinel.levels;
 
+import com.sentinel.starbasesentinel.Grid;
 import com.sentinel.starbasesentinel.enemies.Astronaut;
 import com.sentinel.starbasesentinel.enemies.AstronautFast;
 import com.sentinel.starbasesentinel.enemies.Enemy;
@@ -9,6 +10,7 @@ import com.sentinel.starbasesentinel.towers.Plot;
 import com.sentinel.starbasesentinel.towers.Tower;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 public class Level1 extends Level {
 
@@ -106,8 +108,13 @@ public class Level1 extends Level {
         // Render enemies with 1 second duration in between
         for (Enemy enemy : enemies) {
             if (System.currentTimeMillis() - startTime > (enemies.indexOf(enemy) + 1) * 1000L) {
+                enemy.spawn();
                 enemy.render(gc);
             }
         }
+
+        // Render amount of coins
+        gc.setFill(Color.WHITE);
+        gc.fillText("Coins: " + playerCoins, Grid.translateToCoords(23), Grid.translateToCoords(1));
     }
 }

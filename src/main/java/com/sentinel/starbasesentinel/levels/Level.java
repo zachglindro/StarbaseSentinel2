@@ -15,6 +15,7 @@ public abstract class Level {
     protected final static int WIDTH = 1280;
     protected final static int HEIGHT = 720;
     protected long startTime;
+    protected int playerCoins;
     protected Image bg;
     protected Path path;
     protected ArrayList<Enemy> enemies;
@@ -44,10 +45,16 @@ public abstract class Level {
         }
 
         for (Enemy enemy : enemies) {
+            enemy.update();
+        }
+
+        for (Enemy enemy : enemies) {
             if (enemy.isMarkedForDeletion()) {
                 player.addCoins(enemy.getReward());
             }
         }
+
+        playerCoins = player.getCoins();
 
         // Is outside loop to prevent ConcurrentModificationException
         bullets.removeIf(Bullet::isMarkedForDeletion);

@@ -43,9 +43,8 @@ public class Bullet {
         move();
 
         if (position.distance(target.getPosition()) < 1) {
-            markForDeletion = true; // used i
-            target.updateHealth(-1); // -1 placeholder for damage
-            // TODO: show explosion?
+            markForDeletion = true;
+            target.updateHealth(-1);
         }
     }
 

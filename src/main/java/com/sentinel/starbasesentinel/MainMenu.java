@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -69,6 +70,7 @@ public class MainMenu extends Application {
         // Create buttons
         Button startButton = new Button("Start");
         Button aboutButton = new Button("About");
+        Button developersButton = new Button("Developers");
         Button exitButton = new Button("Exit");
 
         // Set button actions
@@ -77,10 +79,11 @@ public class MainMenu extends Application {
             game.start((Stage) mainMenu.getScene().getWindow()); // ano to
         });
         aboutButton.setOnAction(e -> mainMenu.setCenter(showAboutMenu().getRoot()));
+        developersButton.setOnAction(e -> mainMenu.setCenter(showDevelopersMenu().getRoot()));
         exitButton.setOnAction(e -> Platform.exit());
 
         // Add buttons and logo to menu
-        menuButtons.getChildren().addAll(startButton, aboutButton, exitButton);
+        menuButtons.getChildren().addAll(startButton, aboutButton, developersButton, exitButton);
         menuButtons.setAlignment(Pos.CENTER);
         menuButtons.setSpacing(10);
         withLogo.getChildren().add(menuButtons);
@@ -96,24 +99,68 @@ public class MainMenu extends Application {
     }
 
     private Scene showAboutMenu() {
-        StackPane withBackground = new StackPane();
-
-        BorderPane aboutMenu = new BorderPane();
-        VBox aboutText = new VBox();
-
         Text about = new Text("Starbase Sentinel, a tower defense game.");
-        about.setFill(Color.WHITE);
+        Text enemies = new Text("Prevent your enemies from reaching your base by");
+        Text towers = new Text("left-clicking and right-clicking on plots to build defending towers.");
+        Text economy = new Text("Manage your coins while doing so, though, as towers are costly.");
+        Text win = new Text("Kill all your enemies and prevent your base from belonging to them!");
+
+        VBox aboutContent= new VBox(about, enemies, towers, economy, win);
+
+        for (int i = 0; i < aboutContent.getChildren().size(); i++) {
+            Text text = (Text) aboutContent.getChildren().get(i);
+            text.setFill(Color.WHITE);
+        }
+
+        StackPane withBackground = new StackPane();
+        BorderPane bp = new BorderPane();
 
         Button backButton = new Button("Back");
         backButton.getStylesheets().add("file:src/main/style/button-styles.css");
-        backButton.setOnAction(e -> aboutMenu.setCenter(showMainMenu().getRoot()));
+        backButton.setOnAction(e -> bp.setCenter(showMainMenu().getRoot()));
 
-        aboutText.getChildren().addAll(about, backButton);
-        aboutText.setAlignment(Pos.CENTER);
-        aboutText.setSpacing(10);
-        aboutMenu.setCenter(aboutText);
+        aboutContent.getChildren().add(backButton);
+        aboutContent.setAlignment(Pos.CENTER);
+        aboutContent.setSpacing(10);
 
-        withBackground.getChildren().addAll(background, aboutMenu);
+        bp.setCenter(aboutContent);
+
+        withBackground.getChildren().addAll(background, bp);
+
+        return new Scene(withBackground);
+    }
+
+    private Scene showDevelopersMenu() {
+        Text developers = new Text("Developers");
+        Text zach = new Text("Zach Dwayne Glindro");
+        Text zachFluff = new Text("Favorite game: Witcher 3");
+        Text kervin = new Text("Kervin Ralph Samson");
+        Text kervinFluff = new Text("KebinFX");
+
+        VBox developersContent = new VBox(developers, zach, zachFluff, kervin, kervinFluff);
+
+        developers.setFont(Font.font(30));
+        zach.setFont(Font.font(20));
+        kervin.setFont(Font.font(20));
+        for (int i = 0; i < developersContent.getChildren().size(); i++) {
+            Text text = (Text) developersContent.getChildren().get(i);
+            text.setFill(Color.WHITE);
+        }
+
+        StackPane withBackground = new StackPane();
+        BorderPane bp = new BorderPane();
+
+        Button backButton = new Button("Back");
+        backButton.getStylesheets().add("file:src/main/style/button-styles.css");
+        backButton.setOnAction(e -> bp.setCenter(showMainMenu().getRoot()));
+
+        developersContent.getChildren().add(backButton);
+        developersContent.setAlignment(Pos.CENTER);
+        developersContent.setSpacing(10);
+
+        bp.setCenter(developersContent);
+
+        withBackground.getChildren().addAll(background, bp);
 
         return new Scene(withBackground);
     }

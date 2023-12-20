@@ -75,7 +75,17 @@ public class Level1 extends Level {
 
     @Override
     protected void initPlots() {
-        plots.add(new Plot(2,3));
+        plots.add(new Plot(2, 3));
+        plots.add(new Plot(4, 8));
+        plots.add(new Plot(7, 11));
+        plots.add(new Plot(8, 5));
+        plots.add(new Plot(10, 8));
+        plots.add(new Plot(11, 3));
+        plots.add(new Plot(11, 0));
+        plots.add(new Plot(15, 4));
+        plots.add(new Plot(15, 7));
+        plots.add(new Plot(19, 3));
+        plots.add(new Plot(22, 5));
     }
 
     @Override

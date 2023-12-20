@@ -1,6 +1,7 @@
 package com.sentinel.starbasesentinel.levels;
 
 import com.sentinel.starbasesentinel.enemies.Enemy;
+import com.sentinel.starbasesentinel.towers.BasicTower;
 import com.sentinel.starbasesentinel.towers.Bullet;
 import com.sentinel.starbasesentinel.towers.Plot;
 import com.sentinel.starbasesentinel.towers.Tower;
@@ -52,5 +53,11 @@ public abstract class Level {
     public abstract void render(GraphicsContext gc);
     public ArrayList<Plot> getPlots() {
         return plots;
+    }
+
+    public void addTower(double x, double y) {
+        Tower tower = new BasicTower();
+        tower.place(x, y);
+        towers.add(tower);
     }
 }

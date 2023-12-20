@@ -33,8 +33,12 @@ public class GameTimer extends AnimationTimer {
             double y = mouseEvent.getY();
 
             for (Plot plot : plots) {
-                if (plot.clicked(x, y)) {
-                    System.out.println("Clicked");
+                if (plot.clicked(x, y) && !plot.isOccupied()) {
+                    double plotX = plot.getGridPosition().getX();
+                    double plotY = plot.getGridPosition().getY();
+                    level.addTower(plotX, plotY);
+                    plot.markAsOccupied();
+                    System.out.println("Placed tower at " + plotX + ", " + plotY);
                 }
             }
         });

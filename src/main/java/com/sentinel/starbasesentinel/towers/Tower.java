@@ -23,7 +23,7 @@ public abstract class Tower {
     }
 
     // Place a tower on the grid
-    public void place(int x, int y) {
+    public void place(double x, double y) {
         position = Grid.translateToCoords(x, y);
     }
 

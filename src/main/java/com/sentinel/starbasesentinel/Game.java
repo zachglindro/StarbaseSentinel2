@@ -21,7 +21,6 @@ public class Game {
         Level1 level = new Level1();
 
         GameTimer timer = new GameTimer(level, game, gc);
-
         timer.start();
 
         stage.setScene(game);

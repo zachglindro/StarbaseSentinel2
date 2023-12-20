@@ -15,27 +15,27 @@ public abstract class Enemy {
     protected ImageView imageView;
     protected final double speed;
     protected Point2D position;
-
     protected int health;
-
+    protected int reward;
     protected int damage; // damage when enemy reaches base // di ko pa ginagamit
     protected ArrayList<Point2D> path;
-    protected final Boolean doNotRotate;
+    protected boolean doNotRotate;
     protected boolean markForDeletion;
 
-    protected Enemy(Image image, int health, double x, double y, double speed, Boolean doNotRotate) {
-        this.doNotRotate = doNotRotate;
+    protected Enemy(Image image, double x, double y, int health, int reward, double speed, boolean doNotRotate) {
+        this.health = health;
+        this.reward = reward;
         this.imageView = new ImageView(image);
         this.position = Grid.translateToCoords(x, y);
         this.speed = speed;
-        this.health = health;
         this.path = new ArrayList<>();
+        this.doNotRotate = doNotRotate;
 
         this.markForDeletion = false;
     }
 
-    protected Enemy(Image image, int health, double x, double y, double speed) {
-        this(image, health, x, y, speed, false);
+    protected Enemy(Image image, double x, double y, int health, int reward, double speed) {
+        this(image, x, y, health, reward, speed, false);
     }
 
     public int getHealth(){
@@ -109,5 +109,9 @@ public abstract class Enemy {
         // Draw rotated image at the enemy's position
         // Subtract half of the image's width and height to center the image
         gc.drawImage(rotatedImage, position.getX() - rotatedImage.getWidth() / 2, position.getY() - rotatedImage.getHeight() / 2);
+    }
+
+    public int getReward() {
+        return reward;
     }
 }

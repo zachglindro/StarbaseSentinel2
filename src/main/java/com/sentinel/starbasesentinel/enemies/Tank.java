@@ -6,6 +6,6 @@ public class Tank extends Enemy {
     final static Image image = new Image("file:src/main/resources/enemies/tank/tankslow-up1.gif", 60, 60, true, true);
 
     public Tank(double x, double y) {
-        super(image, 20, x, y, 0.075);
+        super(image, x, y, 20, 100, 0.01);
     }
 }

@@ -16,7 +16,7 @@ public abstract class Tower {
     protected double cooldownTime; // cooldown time between tower's shots
     protected long lastShotTime; // tracks when tower last fired its projectile
 
-    protected Tower(Image image, double range, double cooldownTime) {
+    protected Tower(Image image, double range, int cost, double cooldownTime) {
         this.image = image;
         this.range = Grid.translateToCoords(range);
         this.cooldownTime = cooldownTime;

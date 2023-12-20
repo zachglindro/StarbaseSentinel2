@@ -12,19 +12,22 @@ public class GameTimer extends AnimationTimer {
     private final Level level;
     private final Scene scene;
     private final GraphicsContext gc;
+    private final Player player;
 
     public GameTimer(Level level, Scene scene, GraphicsContext gc) {
         this.level = level;
         this.scene = scene;
         this.gc = gc;
+        this.player = new Player();
     }
     @Override
     public void handle(long l) {
-        level.update();
+        level.update(player);
         level.render(gc);
         this.handleMouseEvent();
     }
 
+    // Logic for placing of towers
     private void handleMouseEvent() {
         ArrayList<Plot> plots = level.getPlots();
 
@@ -33,9 +36,10 @@ public class GameTimer extends AnimationTimer {
             double y = mouseEvent.getY();
 
             for (Plot plot : plots) {
-                if (plot.clicked(x, y) && !plot.isOccupied()) {
+                if (plot.clicked(x, y) && !plot.isOccupied() && player.getCoins() >= 100) {
                     double plotX = plot.getGridPosition().getX();
                     double plotY = plot.getGridPosition().getY();
+                    player.removeCoins(100);
 
                     level.addTower(plotX, plotY);
                     plot.markAsOccupied();

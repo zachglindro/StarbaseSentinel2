@@ -1,5 +1,6 @@
 package com.sentinel.starbasesentinel.levels;
 
+import com.sentinel.starbasesentinel.Player;
 import com.sentinel.starbasesentinel.enemies.Enemy;
 import com.sentinel.starbasesentinel.towers.BasicTower;
 import com.sentinel.starbasesentinel.towers.Bullet;
@@ -37,9 +38,15 @@ public abstract class Level {
     protected abstract void initEnemies(); // initialize enemies to spawn for the level
     protected abstract void initPath(); // initialize path for the level
     protected abstract void initPlots(); // initialize plots for the level
-    public void update() {
+    public void update(Player player) {
         for (Bullet bullet : bullets) {
             bullet.update();
+        }
+
+        for (Enemy enemy : enemies) {
+            if (enemy.isMarkedForDeletion()) {
+                player.addCoins(enemy.getReward());
+            }
         }
 
         // Is outside loop to prevent ConcurrentModificationException

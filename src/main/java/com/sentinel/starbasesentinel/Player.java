@@ -1,3 +1,15 @@
+/********************
+ *
+ * This class represents the user.
+ * It keeps track of their coins, enemies allowed within the base,
+ * and whether they won or lost.
+ *
+ * @author: Zach Dwayne Glindro, Kervin Ralph Samson
+ * @date: 2023-12-21 11:59
+ *
+ *
+ */
+
 package com.sentinel.starbasesentinel;
 
 public class Player {

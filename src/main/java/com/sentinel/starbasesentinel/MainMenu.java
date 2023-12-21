@@ -1,3 +1,14 @@
+/********************
+ *
+ * Starbase Sentinel is a tower defense game.
+ * Build towers to defend against enemies trying to reach your base!
+ *
+ * @author: Zach Dwayne Glindro, Kervin Ralph Samson
+ * @date: 2023-12-21 11:59
+ *
+ *
+ */
+
 package com.sentinel.starbasesentinel;
 
 import javafx.animation.AnimationTimer;

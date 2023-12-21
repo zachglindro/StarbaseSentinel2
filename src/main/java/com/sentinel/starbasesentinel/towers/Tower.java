@@ -1,3 +1,14 @@
+/********************
+ *
+ * This file contains the basic code for creating a tower within the game.
+ * It contains logic for firing on the nearest enemy within range.
+ *
+ * @author: Zach Dwayne Glindro, Kervin Ralph Samson
+ * @date: 2023-12-21 11:59
+ *
+ *
+ */
+
 package com.sentinel.starbasesentinel.towers;
 
 import com.sentinel.starbasesentinel.Grid;

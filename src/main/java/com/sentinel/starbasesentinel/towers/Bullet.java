@@ -1,3 +1,14 @@
+/********************
+ *
+ * This is the representation of a bullet within the game.
+ * It contains code for moving toward the enemy it was originally aimed at.
+ *
+ * @author: Zach Dwayne Glindro, Kervin Ralph Samson
+ * @date: 2023-12-21 11:59
+ *
+ *
+ */
+
 package com.sentinel.starbasesentinel.towers;
 
 import com.sentinel.starbasesentinel.Grid;

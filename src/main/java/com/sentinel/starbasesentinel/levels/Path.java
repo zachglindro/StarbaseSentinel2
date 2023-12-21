@@ -1,3 +1,13 @@
+/********************
+ *
+ * Path is given to enemies so that they know where to go for pathfinding.
+ *
+ * @author: Zach Dwayne Glindro, Kervin Ralph Samson
+ * @date: 2023-12-21 11:59
+ *
+ *
+ */
+
 package com.sentinel.starbasesentinel.levels;
 
 import com.sentinel.starbasesentinel.Grid;

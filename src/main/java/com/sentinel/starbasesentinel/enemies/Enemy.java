@@ -1,3 +1,13 @@
+/********************
+ *
+ * This file contains methods for enemy initialization, rendering, and moving.
+ *
+ * @author: Zach Dwayne Glindro, Kervin Ralph Samson
+ * @date: 2023-12-21 11:59
+ *
+ *
+ */
+
 package com.sentinel.starbasesentinel.enemies;
 
 import com.sentinel.starbasesentinel.Grid;

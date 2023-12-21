@@ -1,3 +1,14 @@
+/********************
+ *
+ * Plot represents the buildable plots in the game.
+ * It keeps track of whether it is occupied or not.
+ *
+ * @author: Zach Dwayne Glindro, Kervin Ralph Samson
+ * @date: 2023-12-21 11:59
+ *
+ *
+ */
+
 package com.sentinel.starbasesentinel.towers;
 
 import com.sentinel.starbasesentinel.Grid;

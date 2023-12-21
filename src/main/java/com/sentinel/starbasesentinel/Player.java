@@ -8,7 +8,7 @@ public class Player {
 
     public Player() {
         enemiesInfiltrated = 0;
-        coins = 200000;
+        coins = 200;
         gameOver = "";
     }
 
